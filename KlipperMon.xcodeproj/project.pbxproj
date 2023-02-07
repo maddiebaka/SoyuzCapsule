@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */; };
+		E180B5EB2992CD9100425DB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5EA2992CD9100425DB0 /* ContentView.swift */; };
+		E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EC2992CD9200425DB0 /* Assets.xcassets */; };
+		E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */; };
+		E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5F12992CD9200425DB0 /* Persistence.swift */; };
+		E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */; };
+		E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */; };
+		E180B60A2992CD9300425DB0 /* KlipperMonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */; };
+		E180B60C2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E180B5FC2992CD9300425DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E180B5DD2992CD9100425DB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E180B5E42992CD9100425DB0;
+			remoteInfo = KlipperMon;
+		};
+		E180B6062992CD9300425DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E180B5DD2992CD9100425DB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E180B5E42992CD9100425DB0;
+			remoteInfo = KlipperMon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E180B5E52992CD9100425DB0 /* KlipperMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlipperMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonApp.swift; sourceTree = "<group>"; };
+		E180B5EA2992CD9100425DB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E180B5EC2992CD9200425DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E180B5F12992CD9200425DB0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E180B5F42992CD9200425DB0 /* KlipperMon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KlipperMon.xcdatamodel; sourceTree = "<group>"; };
+		E180B5F62992CD9200425DB0 /* KlipperMon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KlipperMon.entitlements; sourceTree = "<group>"; };
+		E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlipperMonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonTests.swift; sourceTree = "<group>"; };
+		E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlipperMonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITests.swift; sourceTree = "<group>"; };
+		E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E180B5E22992CD9100425DB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B5F82992CD9300425DB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B6022992CD9300425DB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E180B5DC2992CD9100425DB0 = {
+			isa = PBXGroup;
+			children = (
+				E180B5E72992CD9100425DB0 /* KlipperMon */,
+				E180B5FE2992CD9300425DB0 /* KlipperMonTests */,
+				E180B6082992CD9300425DB0 /* KlipperMonUITests */,
+				E180B5E62992CD9100425DB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E180B5E62992CD9100425DB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E180B5E52992CD9100425DB0 /* KlipperMon.app */,
+				E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */,
+				E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E180B5E72992CD9100425DB0 /* KlipperMon */ = {
+			isa = PBXGroup;
+			children = (
+				E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */,
+				E180B5EA2992CD9100425DB0 /* ContentView.swift */,
+				E180B5EC2992CD9200425DB0 /* Assets.xcassets */,
+				E180B5F12992CD9200425DB0 /* Persistence.swift */,
+				E180B5F62992CD9200425DB0 /* KlipperMon.entitlements */,
+				E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */,
+				E180B5EE2992CD9200425DB0 /* Preview Content */,
+			);
+			path = KlipperMon;
+			sourceTree = "<group>";
+		};
+		E180B5EE2992CD9200425DB0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E180B5FE2992CD9300425DB0 /* KlipperMonTests */ = {
+			isa = PBXGroup;
+			children = (
+				E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */,
+			);
+			path = KlipperMonTests;
+			sourceTree = "<group>";
+		};
+		E180B6082992CD9300425DB0 /* KlipperMonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */,
+				E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */,
+			);
+			path = KlipperMonUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E180B5E42992CD9100425DB0 /* KlipperMon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMon" */;
+			buildPhases = (
+				E180B5E12992CD9100425DB0 /* Sources */,
+				E180B5E22992CD9100425DB0 /* Frameworks */,
+				E180B5E32992CD9100425DB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KlipperMon;
+			productName = KlipperMon;
+			productReference = E180B5E52992CD9100425DB0 /* KlipperMon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E180B5FA2992CD9300425DB0 /* KlipperMonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonTests" */;
+			buildPhases = (
+				E180B5F72992CD9300425DB0 /* Sources */,
+				E180B5F82992CD9300425DB0 /* Frameworks */,
+				E180B5F92992CD9300425DB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E180B5FD2992CD9300425DB0 /* PBXTargetDependency */,
+			);
+			name = KlipperMonTests;
+			productName = KlipperMonTests;
+			productReference = E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E180B6042992CD9300425DB0 /* KlipperMonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonUITests" */;
+			buildPhases = (
+				E180B6012992CD9300425DB0 /* Sources */,
+				E180B6022992CD9300425DB0 /* Frameworks */,
+				E180B6032992CD9300425DB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E180B6072992CD9300425DB0 /* PBXTargetDependency */,
+			);
+			name = KlipperMonUITests;
+			productName = KlipperMonUITests;
+			productReference = E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E180B5DD2992CD9100425DB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					E180B5E42992CD9100425DB0 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					E180B5FA2992CD9300425DB0 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = E180B5E42992CD9100425DB0;
+					};
+					E180B6042992CD9300425DB0 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = E180B5E42992CD9100425DB0;
+					};
+				};
+			};
+			buildConfigurationList = E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "KlipperMon" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E180B5DC2992CD9100425DB0;
+			productRefGroup = E180B5E62992CD9100425DB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E180B5E42992CD9100425DB0 /* KlipperMon */,
+				E180B5FA2992CD9300425DB0 /* KlipperMonTests */,
+				E180B6042992CD9300425DB0 /* KlipperMonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E180B5E32992CD9100425DB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */,
+				E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B5F92992CD9300425DB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B6032992CD9300425DB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E180B5E12992CD9100425DB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
+				E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */,
+				E180B5EB2992CD9100425DB0 /* ContentView.swift in Sources */,
+				E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B5F72992CD9300425DB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E180B6012992CD9300425DB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E180B60A2992CD9300425DB0 /* KlipperMonUITests.swift in Sources */,
+				E180B60C2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E180B5FD2992CD9300425DB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E180B5E42992CD9100425DB0 /* KlipperMon */;
+			targetProxy = E180B5FC2992CD9300425DB0 /* PBXContainerItemProxy */;
+		};
+		E180B6072992CD9300425DB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E180B5E42992CD9100425DB0 /* KlipperMon */;
+			targetProxy = E180B6062992CD9300425DB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E180B60D2992CD9300425DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E180B60E2992CD9300425DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		E180B6102992CD9300425DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KlipperMon/KlipperMon.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KlipperMon/Preview Content\"";
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E180B6112992CD9300425DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KlipperMon/KlipperMon.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KlipperMon/Preview Content\"";
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E180B6132992CD9300425DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KlipperMon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KlipperMon";
+			};
+			name = Debug;
+		};
+		E180B6142992CD9300425DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KlipperMon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KlipperMon";
+			};
+			name = Release;
+		};
+		E180B6162992CD9300425DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = KlipperMon;
+			};
+			name = Debug;
+		};
+		E180B6172992CD9300425DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9ASV855X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = KlipperMon;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "KlipperMon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E180B60D2992CD9300425DB0 /* Debug */,
+				E180B60E2992CD9300425DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E180B6102992CD9300425DB0 /* Debug */,
+				E180B6112992CD9300425DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E180B6132992CD9300425DB0 /* Debug */,
+				E180B6142992CD9300425DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E180B6162992CD9300425DB0 /* Debug */,
+				E180B6172992CD9300425DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E180B5F42992CD9200425DB0 /* KlipperMon.xcdatamodel */,
+			);
+			currentVersion = E180B5F42992CD9200425DB0 /* KlipperMon.xcdatamodel */;
+			path = KlipperMon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E180B5DD2992CD9100425DB0 /* Project object */;
+}
