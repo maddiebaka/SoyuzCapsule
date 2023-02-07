@@ -16,6 +16,9 @@
 		E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */; };
 		E180B60A2992CD9300425DB0 /* KlipperMonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */; };
 		E180B60C2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */; };
+		E180B61B2992CF2200425DB0 /* KlipperWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61A2992CF2200425DB0 /* KlipperWebsocket.swift */; };
+		E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */; };
+		E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlipperMonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITests.swift; sourceTree = "<group>"; };
 		E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E180B61A2992CF2200425DB0 /* KlipperWebsocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperWebsocket.swift; sourceTree = "<group>"; };
+		E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterObjectsQuery.swift; sourceTree = "<group>"; };
+		E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonMenuBarExtraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 				E180B5F62992CD9200425DB0 /* KlipperMon.entitlements */,
 				E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */,
 				E180B5EE2992CD9200425DB0 /* Preview Content */,
+				E180B61A2992CF2200425DB0 /* KlipperWebsocket.swift */,
+				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
+				E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */,
 			);
 			path = KlipperMon;
 			sourceTree = "<group>";
@@ -265,10 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */,
 				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
+				E180B61B2992CF2200425DB0 /* KlipperWebsocket.swift in Sources */,
 				E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */,
 				E180B5EB2992CD9100425DB0 /* ContentView.swift in Sources */,
 				E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */,
+				E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
