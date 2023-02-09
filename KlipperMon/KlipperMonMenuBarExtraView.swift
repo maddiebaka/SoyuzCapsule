@@ -8,14 +8,6 @@
 import SwiftUI
 import AppKit
 
-struct KlipperMenuBarButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .foregroundColor(.white)
-    }
-}
-
 struct KlipperMonMenuBarExtraView: View {
     let DANGERTEMP = 40.0
     

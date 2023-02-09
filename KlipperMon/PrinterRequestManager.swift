@@ -9,21 +9,39 @@ import Foundation
 import Network
 import Starscream
 
-struct JsonRpcRequest: Encodable {
-    let jsonrpc = "2.0"
+struct JsonRpcRequest: Codable {
+    var jsonrpc = "2.0"
     let method: String
-    let params: [String: String]
-    //let id = UUID()
+    let params: [String: [String: String?]]
+    var id = 1
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(jsonrpc, forKey: .jsonrpc)
+        try container.encode(method, forKey: .method)
+        try container.encode(params, forKey: .params)
+        try container.encode(id, forKey: .id)
+    }
 }
 
 class PrinterRequestManager: ObservableObject, WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
         switch event {
         case .connected(let headers):
-            //isConnected = true
             print("websocket is connected: \(headers)")
+            let jsonRpcRequest = JsonRpcRequest(method: "printer.objects.subscribe",
+                                                params: ["objects":
+                                                            ["extruder": nil,
+                                                             "virtual_sdcard": nil,
+                                                             "heater_bed": nil,
+                                                             "print_stats": nil]
+                                                        ])
+            
+            print(String(data: try! JSONEncoder().encode(jsonRpcRequest), encoding: .utf8)!)
+            socket.write(data: try! JSONEncoder().encode(jsonRpcRequest), completion: {
+                print("Data transferred.")
+            })
         case .disconnected(let reason, let code):
-            //isConnected = false
             print("websocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
             print("Received text: \(string)")
@@ -38,12 +56,9 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         case .reconnectSuggested(_):
             break
         case .cancelled:
-            //isConnected = false
             break
         case .error(let error):
             print("[error] Starscream: \(error.debugDescription)")
-            //isConnected = false
-            //handleError(error)
         }
     }
     
@@ -66,30 +81,15 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
     static let shared = PrinterRequestManager()
     
     private init() {
-        // MARK: Starscream shit
-        //
-        //
-        print("init PRM..")
-        //        var request = URLRequest(url: URL(string: "http://10.0.21.39:7125/websocket")!)
-        //        request.timeoutInterval = 5
-        //        socket = WebSocket(request: request)
-        //        socket.delegate = self
-        //socket.connect()
-        
-        //let data = try! JSONEncoder().encode(JsonRpcRequest(method: "printer.objects.list", params: [:]))
-        //socket.write(data: data)
-        
-        // MARK: NWBrowser shit
-        //
-        //
+        // MARK: Bonjour browser initialization at instantiation
         nwBrowser.browseResultsChangedHandler = { (newResults, changes) in
             print("[update] Results changed.")
             newResults.forEach { result in
                 print(result)
                 self.nwBrowserDiscoveredItems.append(result.endpoint)
             }
-            //self.nwBrowserDiscoveredItems.append(newResults.description)
         }
+        // State update handler
         nwBrowser.stateUpdateHandler = { newState in
             switch newState {
             case .failed(let error):
@@ -105,20 +105,13 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
                 break
             }
         }
+        // Start up the bonjour browser, get results and process them in the update handler
         nwBrowser.start(queue: DispatchQueue.main)
     }
     
-    private func openWebsocket() {
-        if let host = socketHost, let port = socketPort {
-            //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
-            var request = URLRequest(url: URL(string: "http://\(host):\(port)/websocket")!)
-            request.timeoutInterval = 5
-            socket = WebSocket(request: request)
-            socket.delegate = self
-            socket.connect()
-        }
-    }
-    
+    // Called from the UI, providing an endpoint.
+    // Momentarily connect/disconnects from the endpoint to retrieve the host/port
+    // calls private function openWebsocket to process the host/port
     func resolveBonjourHost(_ endpoint: NWEndpoint) {
         connection = NWConnection(to: endpoint, using: .tcp)
         connection.stateUpdateHandler = { [self] state in
@@ -142,13 +135,23 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
             }
         }
         connection.start(queue: .global())
-        //connection.cancel()
-        
-        //self.openWebsocket()
     }
-    // NWConnection shit
-    //connection = NWConnection(
     
+    // Opens the websocket connection
+    // TODO: host and port should be function arguments probably maybe
+    private func openWebsocket() {
+        if let host = socketHost, let port = socketPort {
+            //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
+            var request = URLRequest(url: URL(string: "http://\(host):\(port)/websocket")!)
+            request.timeoutInterval = 5
+            socket = WebSocket(request: request)
+            socket.delegate = self
+            socket.connect()
+        }
+    }
+    
+    // Old REST way to do it
+    // TODO: Stop using this.
     func queryPrinterStats() async {
         guard let url = URL(string: "http://10.0.21.39/printer/objects/query?extruder&virtual_sdcard&print_stats&heater_bed") else {
             fatalError("Missing URL")
@@ -165,7 +168,6 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
             let decoder = JSONDecoder()
             printerObjectsQuery = try decoder.decode(PrinterObjectsQuery.self, from: data)
             printerCommsOkay = true
-            //return printerObjectsQuery.result.status.extruder.temperature
         } catch {
             print("Exception thrown: \(error)")
             printerCommsOkay = false
