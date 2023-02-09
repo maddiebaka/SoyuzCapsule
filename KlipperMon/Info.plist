@@ -4,6 +4,7 @@
 <dict>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_moonraker._tcp.</string>
 		<string>_http._tcp.</string>
 	</array>
 	<key>CFBundleURLTypes</key>

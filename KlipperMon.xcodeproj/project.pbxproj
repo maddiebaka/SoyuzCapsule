@@ -19,6 +19,7 @@
 		E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */; };
 		E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */; };
 		E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* PrinterRequestManager.swift */; };
+		E1E8B07729949E2700BABE4B /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E1E8B07629949E2700BABE4B /* Starscream */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E8B07729949E2700BABE4B /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +164,9 @@
 			dependencies = (
 			);
 			name = KlipperMon;
+			packageProductDependencies = (
+				E1E8B07629949E2700BABE4B /* Starscream */,
+			);
 			productName = KlipperMon;
 			productReference = E180B5E52992CD9100425DB0 /* KlipperMon.app */;
 			productType = "com.apple.product-type.application";
@@ -234,6 +239,9 @@
 				Base,
 			);
 			mainGroup = E180B5DC2992CD9100425DB0;
+			packageReferences = (
+				E1E8B07529949E2700BABE4B /* XCRemoteSwiftPackageReference "Starscream" */,
+			);
 			productRefGroup = E180B5E62992CD9100425DB0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -600,6 +608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1E8B07529949E2700BABE4B /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1E8B07629949E2700BABE4B /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1E8B07529949E2700BABE4B /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */ = {

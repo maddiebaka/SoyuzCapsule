@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AppKit
-import Network
 
 struct KlipperMenuBarButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -36,9 +35,9 @@ struct KlipperMonMenuBarExtraView: View {
     @State var hotendHotTemp: Bool = false
     @State var bedHotTemp: Bool = false
     
-    @State var nwBrowserDiscoveredItems: [NWEndpoint] = []
+    //@State var nwBrowserDiscoveredItems: [NWEndpoint] = []
     
-    var nwBrowser = NWBrowser(for: .bonjour(type: "_moonraker._tcp.", domain: "local."), using: .tcp)
+    //var nwBrowser = NWBrowser(for: .bonjour(type: "_moonraker._tcp.", domain: "local."), using: .tcp)
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -120,7 +119,7 @@ struct KlipperMonMenuBarExtraView: View {
         .frame(minWidth: 220, maxWidth: 250)
         .onReceive(timer) { input in
             Task {
-                await printerManager.queryPrinterStats()
+                //await printerManager.queryPrinterStats()
                 
                 if let query = printerManager.printerObjectsQuery {
                     hotendHotTemp = (query.result.status.extruder.temperature > DANGERTEMP) ? true : false
@@ -132,45 +131,11 @@ struct KlipperMonMenuBarExtraView: View {
             }
         }
         // Testing bonjour stuff
-        .onAppear {
-            nwBrowser.browseResultsChangedHandler = { (newResults, changes) in
-                print("[update] Results changed.")
-                newResults.forEach { result in
-                    print(result)
-                    self.nwBrowserDiscoveredItems.append(result.endpoint)
-                }
-                //self.nwBrowserDiscoveredItems.append(newResults.description)
-            }
-            nwBrowser.stateUpdateHandler = { newState in
-                switch newState {
-                case .failed(let error):
-                    print("[error] nwbrowser: \(error)")
-                case .ready:
-                    print("[ready] nwbrowser")
-                case .setup:
-                    print("[setup] nwbrowser")
-                default:
-                    break
-                }
-            }
-            nwBrowser.start(queue: DispatchQueue.main)
-        }
-        ForEach(nwBrowserDiscoveredItems, id: \.hashValue) { item in
+        ForEach(printerManager.nwBrowserDiscoveredItems, id: \.hashValue) { endpoint in
             Button {
-                let connection = NWConnection(to: item, using: .tcp)
-                connection.stateUpdateHandler = { newState in
-                    switch newState {
-                    case .failed(let error):
-                        print("[error] nwconnection: \(error)")
-                    case .ready:
-                        print("[ready] nwconnection")
-                    default:
-                        break
-                    }
-                }
-                connection.start(queue: DispatchQueue.main)
+                printerManager.resolveBonjourHost(endpoint)
             } label: {
-                Text(item.debugDescription)
+                Text(endpoint.debugDescription)
             }
         }
     }
