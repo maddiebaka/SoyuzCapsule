@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 @main
 struct KlipperMonMenuBarApp: App {
     let persistenceController = PersistenceController.shared
@@ -15,29 +14,22 @@ struct KlipperMonMenuBarApp: App {
     @State var currentIcon = "move.3d"
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        WindowGroup(id: "floating-stats") {
+            KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                //.frame(width: 300, height: 140)
         }
+        //.windowResizability(.contentSize)
+        
+        Window("Configuration", id: "soyuz_cfg", content: {
+            PrinterConfigView()
+        })
         
         MenuBarExtra("Soyuz", systemImage: currentIcon) {
             KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)
+                .padding([.top, .leading, .trailing], 8)
+                .padding([.bottom], 6)
         }
         .menuBarExtraStyle(.window)
-    }
-}
-
-protocol MenuBarExtraIconUpdater {
-    func updateIcon(systemName: String)
-}
-
-struct KlipperMonApp: App {
-    let persistenceController = PersistenceController.shared
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
     }
 }
