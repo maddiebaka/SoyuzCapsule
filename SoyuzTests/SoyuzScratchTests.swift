@@ -7,7 +7,7 @@
 
 import XCTest
 
-class ScratchTests: XCTestCase {
+class SoyuzScratchTests: XCTestCase {
     
     func testOneAndOneIsEqual() {
         let a = 1

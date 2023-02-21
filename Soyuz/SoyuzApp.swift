@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct KlipperMonMenuBarApp: App {
+struct SoyuzApp: App {
     let persistenceController = PersistenceController.shared
     
     @State var currentIcon = "move.3d"
@@ -26,7 +26,7 @@ struct KlipperMonMenuBarApp: App {
         .windowResizability(.contentSize)
         
         MenuBarExtra("Soyuz", systemImage: currentIcon) {
-            KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)
+            SoyuzMenuBarExtraView(currentMenuBarIcon: $currentIcon)
                 .padding([.top, .leading, .trailing], 8)
                 .padding([.bottom], 6)
         }

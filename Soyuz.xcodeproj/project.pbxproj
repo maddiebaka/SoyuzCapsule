@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
-		E16378B229A43CE1002F05E9 /* KlipperMonScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */; };
-		E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */; };
+		E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */; };
+		E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* SoyuzApp.swift */; };
 		E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EC2992CD9200425DB0 /* Assets.xcassets */; };
 		E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */; };
 		E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5F12992CD9200425DB0 /* Persistence.swift */; };
 		E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */; };
-		E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */; };
-		E180B60A2992CD9300425DB0 /* KlipperMonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */; };
-		E180B60C2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */; };
+		E180B6002992CD9300425DB0 /* SoyuzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5FF2992CD9300425DB0 /* SoyuzTests.swift */; };
+		E180B60A2992CD9300425DB0 /* SoyuzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6092992CD9300425DB0 /* SoyuzUITests.swift */; };
+		E180B60C2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */; };
 		E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */; };
-		E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */; };
+		E180B61F2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */; };
 		E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* PrinterRequestManager.swift */; };
 		E1E8B07729949E2700BABE4B /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E1E8B07629949E2700BABE4B /* Starscream */; };
 		E1E8B07929955ABE00BABE4B /* PrinterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8B07829955ABE00BABE4B /* PrinterStats.swift */; };
@@ -44,21 +44,21 @@
 /* Begin PBXFileReference section */
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
-		E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonScratchTests.swift; sourceTree = "<group>"; };
-		E180B5E52992CD9100425DB0 /* KlipperMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlipperMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonApp.swift; sourceTree = "<group>"; };
+		E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzScratchTests.swift; sourceTree = "<group>"; };
+		E180B5E52992CD9100425DB0 /* Soyuz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soyuz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B5E82992CD9100425DB0 /* SoyuzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzApp.swift; sourceTree = "<group>"; };
 		E180B5EC2992CD9200425DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E180B5F12992CD9200425DB0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E180B5F42992CD9200425DB0 /* KlipperMon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KlipperMon.xcdatamodel; sourceTree = "<group>"; };
-		E180B5F62992CD9200425DB0 /* KlipperMon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KlipperMon.entitlements; sourceTree = "<group>"; };
-		E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlipperMonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonTests.swift; sourceTree = "<group>"; };
-		E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlipperMonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITests.swift; sourceTree = "<group>"; };
-		E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E180B5F62992CD9200425DB0 /* Soyuz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Soyuz.entitlements; sourceTree = "<group>"; };
+		E180B5FB2992CD9300425DB0 /* SoyuzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoyuzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B5FF2992CD9300425DB0 /* SoyuzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzTests.swift; sourceTree = "<group>"; };
+		E180B6052992CD9300425DB0 /* SoyuzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoyuzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E180B6092992CD9300425DB0 /* SoyuzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzUITests.swift; sourceTree = "<group>"; };
+		E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterObjectsQuery.swift; sourceTree = "<group>"; };
-		E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonMenuBarExtraView.swift; sourceTree = "<group>"; };
+		E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzMenuBarExtraView.swift; sourceTree = "<group>"; };
 		E180B6212993256E00425DB0 /* PrinterRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManager.swift; sourceTree = "<group>"; };
 		E1E8B07829955ABE00BABE4B /* PrinterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,9 +92,9 @@
 		E180B5DC2992CD9100425DB0 = {
 			isa = PBXGroup;
 			children = (
-				E180B5E72992CD9100425DB0 /* KlipperMon */,
-				E180B5FE2992CD9300425DB0 /* KlipperMonTests */,
-				E180B6082992CD9300425DB0 /* KlipperMonUITests */,
+				E180B5E72992CD9100425DB0 /* Soyuz */,
+				E180B5FE2992CD9300425DB0 /* SoyuzTests */,
+				E180B6082992CD9300425DB0 /* SoyuzUITests */,
 				E180B5E62992CD9100425DB0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,30 +102,30 @@
 		E180B5E62992CD9100425DB0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E180B5E52992CD9100425DB0 /* KlipperMon.app */,
-				E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */,
-				E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */,
+				E180B5E52992CD9100425DB0 /* Soyuz.app */,
+				E180B5FB2992CD9300425DB0 /* SoyuzTests.xctest */,
+				E180B6052992CD9300425DB0 /* SoyuzUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E180B5E72992CD9100425DB0 /* KlipperMon */ = {
+		E180B5E72992CD9100425DB0 /* Soyuz */ = {
 			isa = PBXGroup;
 			children = (
 				E124B9D72993FE5500C0D2D2 /* Info.plist */,
-				E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */,
+				E180B5E82992CD9100425DB0 /* SoyuzApp.swift */,
 				E180B5EC2992CD9200425DB0 /* Assets.xcassets */,
 				E180B5F12992CD9200425DB0 /* Persistence.swift */,
-				E180B5F62992CD9200425DB0 /* KlipperMon.entitlements */,
+				E180B5F62992CD9200425DB0 /* Soyuz.entitlements */,
 				E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */,
 				E180B5EE2992CD9200425DB0 /* Preview Content */,
 				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
-				E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */,
+				E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */,
 				E180B6212993256E00425DB0 /* PrinterRequestManager.swift */,
 				E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */,
 				E1E8B07829955ABE00BABE4B /* PrinterStats.swift */,
 			);
-			path = KlipperMon;
+			path = Soyuz;
 			sourceTree = "<group>";
 		};
 		E180B5EE2992CD9200425DB0 /* Preview Content */ = {
@@ -136,30 +136,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		E180B5FE2992CD9300425DB0 /* KlipperMonTests */ = {
+		E180B5FE2992CD9300425DB0 /* SoyuzTests */ = {
 			isa = PBXGroup;
 			children = (
-				E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */,
-				E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */,
+				E180B5FF2992CD9300425DB0 /* SoyuzTests.swift */,
+				E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */,
 			);
-			path = KlipperMonTests;
+			path = SoyuzTests;
 			sourceTree = "<group>";
 		};
-		E180B6082992CD9300425DB0 /* KlipperMonUITests */ = {
+		E180B6082992CD9300425DB0 /* SoyuzUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E180B6092992CD9300425DB0 /* KlipperMonUITests.swift */,
-				E180B60B2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift */,
+				E180B6092992CD9300425DB0 /* SoyuzUITests.swift */,
+				E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */,
 			);
-			path = KlipperMonUITests;
+			path = SoyuzUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E180B5E42992CD9100425DB0 /* KlipperMon */ = {
+		E180B5E42992CD9100425DB0 /* Soyuz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMon" */;
+			buildConfigurationList = E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "Soyuz" */;
 			buildPhases = (
 				E180B5E12992CD9100425DB0 /* Sources */,
 				E180B5E22992CD9100425DB0 /* Frameworks */,
@@ -169,17 +169,17 @@
 			);
 			dependencies = (
 			);
-			name = KlipperMon;
+			name = Soyuz;
 			packageProductDependencies = (
 				E1E8B07629949E2700BABE4B /* Starscream */,
 			);
 			productName = KlipperMon;
-			productReference = E180B5E52992CD9100425DB0 /* KlipperMon.app */;
+			productReference = E180B5E52992CD9100425DB0 /* Soyuz.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E180B5FA2992CD9300425DB0 /* KlipperMonTests */ = {
+		E180B5FA2992CD9300425DB0 /* SoyuzTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonTests" */;
+			buildConfigurationList = E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "SoyuzTests" */;
 			buildPhases = (
 				E180B5F72992CD9300425DB0 /* Sources */,
 				E180B5F82992CD9300425DB0 /* Frameworks */,
@@ -190,14 +190,14 @@
 			dependencies = (
 				E180B5FD2992CD9300425DB0 /* PBXTargetDependency */,
 			);
-			name = KlipperMonTests;
+			name = SoyuzTests;
 			productName = KlipperMonTests;
-			productReference = E180B5FB2992CD9300425DB0 /* KlipperMonTests.xctest */;
+			productReference = E180B5FB2992CD9300425DB0 /* SoyuzTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E180B6042992CD9300425DB0 /* KlipperMonUITests */ = {
+		E180B6042992CD9300425DB0 /* SoyuzUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonUITests" */;
+			buildConfigurationList = E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "SoyuzUITests" */;
 			buildPhases = (
 				E180B6012992CD9300425DB0 /* Sources */,
 				E180B6022992CD9300425DB0 /* Frameworks */,
@@ -208,9 +208,9 @@
 			dependencies = (
 				E180B6072992CD9300425DB0 /* PBXTargetDependency */,
 			);
-			name = KlipperMonUITests;
+			name = SoyuzUITests;
 			productName = KlipperMonUITests;
-			productReference = E180B6052992CD9300425DB0 /* KlipperMonUITests.xctest */;
+			productReference = E180B6052992CD9300425DB0 /* SoyuzUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -236,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "KlipperMon" */;
+			buildConfigurationList = E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "Soyuz" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -252,9 +252,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E180B5E42992CD9100425DB0 /* KlipperMon */,
-				E180B5FA2992CD9300425DB0 /* KlipperMonTests */,
-				E180B6042992CD9300425DB0 /* KlipperMonUITests */,
+				E180B5E42992CD9100425DB0 /* Soyuz */,
+				E180B5FA2992CD9300425DB0 /* SoyuzTests */,
+				E180B6042992CD9300425DB0 /* SoyuzUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,9 +295,9 @@
 				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
 				E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */,
 				E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */,
-				E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */,
+				E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */,
 				E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */,
-				E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */,
+				E180B61F2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,8 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */,
-				E16378B229A43CE1002F05E9 /* KlipperMonScratchTests.swift in Sources */,
+				E180B6002992CD9300425DB0 /* SoyuzTests.swift in Sources */,
+				E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,8 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E180B60A2992CD9300425DB0 /* KlipperMonUITests.swift in Sources */,
-				E180B60C2992CD9300425DB0 /* KlipperMonUITestsLaunchTests.swift in Sources */,
+				E180B60A2992CD9300425DB0 /* SoyuzUITests.swift in Sources */,
+				E180B60C2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,12 +324,12 @@
 /* Begin PBXTargetDependency section */
 		E180B5FD2992CD9300425DB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E180B5E42992CD9100425DB0 /* KlipperMon */;
+			target = E180B5E42992CD9100425DB0 /* Soyuz */;
 			targetProxy = E180B5FC2992CD9300425DB0 /* PBXContainerItemProxy */;
 		};
 		E180B6072992CD9300425DB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E180B5E42992CD9100425DB0 /* KlipperMon */;
+			target = E180B5E42992CD9100425DB0 /* Soyuz */;
 			targetProxy = E180B6062992CD9300425DB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -453,23 +453,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KlipperMon/KlipperMon.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Soyuz/Soyuz.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KlipperMon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Soyuz/Preview\\ Content";
 				DEVELOPMENT_TEAM = W9ASV855X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KlipperMon/Info.plist;
+				INFOPLIST_FILE = Soyuz/Info.plist;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMon;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.Soyuz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -481,23 +483,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KlipperMon/KlipperMon.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Soyuz/Soyuz.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KlipperMon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Soyuz/Preview\\ Content";
 				DEVELOPMENT_TEAM = W9ASV855X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KlipperMon/Info.plist;
+				INFOPLIST_FILE = Soyuz/Info.plist;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.KlipperMon;
+				PRODUCT_BUNDLE_IDENTIFIER = info.maddie.Soyuz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -519,7 +523,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KlipperMon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KlipperMon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Soyuz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Soyuz";
 			};
 			name = Debug;
 		};
@@ -538,7 +542,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KlipperMon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KlipperMon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Soyuz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Soyuz";
 			};
 			name = Release;
 		};
@@ -579,7 +583,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "KlipperMon" */ = {
+		E180B5E02992CD9100425DB0 /* Build configuration list for PBXProject "Soyuz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E180B60D2992CD9300425DB0 /* Debug */,
@@ -588,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMon" */ = {
+		E180B60F2992CD9300425DB0 /* Build configuration list for PBXNativeTarget "Soyuz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E180B6102992CD9300425DB0 /* Debug */,
@@ -597,7 +601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonTests" */ = {
+		E180B6122992CD9300425DB0 /* Build configuration list for PBXNativeTarget "SoyuzTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E180B6132992CD9300425DB0 /* Debug */,
@@ -606,7 +610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "KlipperMonUITests" */ = {
+		E180B6152992CD9300425DB0 /* Build configuration list for PBXNativeTarget "SoyuzUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E180B6162992CD9300425DB0 /* Debug */,

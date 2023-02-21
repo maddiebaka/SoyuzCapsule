@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSUIElement</key>
-	<false/>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_moonraker._tcp.</string>
-		<string>_http._tcp.</string>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -21,6 +14,11 @@
 				<string>soyuz</string>
 			</array>
 		</dict>
+	</array>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_moonraker._tcp.</string>
+		<string>_http._tcp.</string>
 	</array>
 	<key>NSServices</key>
 	<array/>

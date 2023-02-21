@@ -9,7 +9,7 @@ import SwiftUI
 import AppKit
 import Network
 
-struct KlipperMonMenuBarExtraView: View {
+struct SoyuzMenuBarExtraView: View {
     // The threshhold considered a burn-risk, at which point certain UI elements turn red.
     let DANGERTEMP = 40.0
     
@@ -101,7 +101,7 @@ struct KlipperMonMenuBarExtraView: View {
 struct KlipperMonMenuBarExtraView_Previews: PreviewProvider {
     @State static var currentMenuBarIcon = "move.3d"
     static var previews: some View {
-        KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentMenuBarIcon)
+        SoyuzMenuBarExtraView(currentMenuBarIcon: $currentMenuBarIcon)
     }
 }
 
