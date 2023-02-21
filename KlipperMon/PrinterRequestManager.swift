@@ -24,81 +24,117 @@ struct JsonRpcRequest: Codable {
     }
 }
 
+//@MainActor
 class PrinterRequestManager: ObservableObject, WebSocketDelegate {
-    func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
-        switch event {
-        case .connected(let headers):
-            print("websocket is connected: \(headers)")
-            let jsonRpcRequest = JsonRpcRequest(method: "printer.objects.subscribe",
-                                                params: ["objects":
-                                                            ["extruder": nil,
-                                                             "virtual_sdcard": nil,
-                                                             "heater_bed": nil,
-                                                             "print_stats": nil]
-                                                        ])
-            
-            print(String(data: try! JSONEncoder().encode(jsonRpcRequest), encoding: .utf8)!)
-            socket.write(data: try! JSONEncoder().encode(jsonRpcRequest), completion: {
-                print("Data transferred.")
-            })
-        case .disconnected(let reason, let code):
-            print("websocket is disconnected: \(reason) with code: \(code)")
-        case .text(let string):
-            print("Received text: \(string)")
-        case .binary(let data):
-            print("Received data: \(data.count)")
-        case .ping(_):
-            break
-        case .pong(_):
-            break
-        case .viabilityChanged(_):
-            break
-        case .reconnectSuggested(_):
-            break
-        case .cancelled:
-            break
-        case .error(let error):
-            print("[error] Starscream: \(error.debugDescription)")
-        }
-    }
-    
-    // REST query results
-    @Published var printerObjectsQuery: PrinterObjectsQuery?
-    
-    // Websocket RPC-JSON endpoints discovered via bonjour
-    @Published var nwBrowserDiscoveredItems: [NWEndpoint] = []
-    
-    @Published var printerCommsOkay = false
-    
-    var socket: WebSocket!
-    
-    private var socketHost, socketPort: String?
-    
-    //var nwBrowser: NWBrowser!
-    let nwBrowser = NWBrowser(for: .bonjour(type: "_moonraker._tcp", domain: "local."), using: .tcp)
-    var connection: NWConnection!
+    let WEBSOCKET_TIMEOUT_INTERVAL: TimeInterval = 60.0
     
     static let shared = PrinterRequestManager()
     
+    // Debug stuff
+    let startDate = Date()
+    let startDateString: String
+    let filename: URL
+    
+    func writeToDebugLog(_ output: String) {
+        do {
+            let fileHandle = try FileHandle(forWritingTo: filename)
+            defer {
+                fileHandle.closeFile()
+            }
+            fileHandle.seekToEndOfFile()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
+            
+            let debugOutput = String("\(dateFormatter.string(from: Date())) - \(output)\n")
+            fileHandle.write(debugOutput.data(using: .utf8)!)
+        } catch {
+            print("[error] writeToDebugLog - \(error)")
+        }
+    }
+    
+    // Websocket JSON-RPC endpoints discovered via bonjour
+    @Published var nwBrowserDiscoveredItems: [NWBrowser.Result] = []
+    
+    
+    // Websocket JSON-RPC published data
+    @Published var state: String
+    @Published var progress: Double
+    @Published var extruderTemperature: Double
+    @Published var bedTemperature: Double
+    
+    // Active connection published data
+    @Published var isConnected = false
+    @Published var socketHost: String
+    @Published var socketPort: String
+    
+    let nwBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)
+    var connection: NWConnection!
+    
+    var socket: WebSocket?
+    var lastPingDate = Date()
+    
+    // TODO: Set this up to actually reconnect
+    
+    // Parse a JSON-RPC query-response message
+    func parse_response(_ response: jsonRpcResponse) {
+        state = response.result.status.print_stats?.state ?? ""
+        progress = response.result.status.virtual_sdcard?.progress ?? 0.0
+        extruderTemperature = response.result.status.extruder?.temperature ?? 0.0
+        bedTemperature = response.result.status.heater_bed?.temperature ?? 0.0
+        
+        print(response)
+    }
+    
+    // Parse a JSON-RPC update message
+    func parse_update(_ update: jsonRpcUpdate) {
+        if let newState = update.params.status?.print_stats?.state {
+            state = newState
+        }
+        if let newProgress = update.params.status?.virtual_sdcard?.progress  {
+            progress = newProgress
+        }
+        if let newExtruderTemp = update.params.status?.extruder?.temperature  {
+            extruderTemperature = newExtruderTemp
+        }
+        if let newBedTemp = update.params.status?.heater_bed?.temperature  {
+            bedTemperature = newBedTemp
+        }
+    }
+    
     private init() {
+        state = ""
+        progress = 0.0
+        extruderTemperature = 0.0
+        bedTemperature = 0.0
+        socketHost = ""
+        socketPort = ""
+        //reconnectionTimer = nil
+        
+        // MARK: Debug stuff
+        startDateString = "\(startDate)\n\n"
+        filename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("klippermon-debug-\(startDateString).txt")
+        
+        do {
+            try startDateString.write(to: filename, atomically: true, encoding: .utf8)
+        } catch {
+            print("[error] Couldn't write to \(filename) - \(error)")
+        }
+        
         // MARK: Bonjour browser initialization at instantiation
         nwBrowser.browseResultsChangedHandler = { (newResults, changes) in
             print("[update] Results changed.")
             newResults.forEach { result in
                 print(result)
-                self.nwBrowserDiscoveredItems.append(result.endpoint)
+                self.nwBrowserDiscoveredItems.append(result)
             }
         }
-        // State update handler
+        // Bonjour browser state update handler
         nwBrowser.stateUpdateHandler = { newState in
             switch newState {
             case .failed(let error):
                 print("[error] nwbrowser: \(error)")
             case .ready:
                 print("[ready] nwbrowser")
-                if let innerEndpoint = self.connection?.currentPath?.remoteEndpoint, case .hostPort(let host, let port) = innerEndpoint {
-                    print("Connected to:", "\(host):\(port)")
-                }
             case .setup:
                 print("[setup] nwbrowser")
             default:
@@ -109,22 +145,32 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         nwBrowser.start(queue: DispatchQueue.main)
     }
     
-    // Called from the UI, providing an endpoint.
+    // Called from the UI with an endpoint.
     // Momentarily connect/disconnects from the endpoint to retrieve the host/port
     // calls private function openWebsocket to process the host/port
     func resolveBonjourHost(_ endpoint: NWEndpoint) {
+        // Debug stuff
+        endpoint.txtRecord?.forEach({ (key: String, value: NWTXTRecord.Entry) in
+            print("\(key): \(value)")
+        })
+        
         connection = NWConnection(to: endpoint, using: .tcp)
         connection.stateUpdateHandler = { [self] state in
             switch state {
             case .ready:
                 if let innerEndpoint = connection.currentPath?.remoteEndpoint, case .hostPort(let host, let port) = innerEndpoint {
-                    print("Connected to \(host):\(port)")
+                    let hostPortDebugOutput = "Connected to \(host):\(port)"
+                    
+                    print(hostPortDebugOutput)
+                    writeToDebugLog(hostPortDebugOutput)
+                    
                     let hostString = "\(host)"
-                    let regex = try! Regex("%en0")
+                    let regex = try! Regex("%(.+)")
                     let match = hostString.firstMatch(of: regex)
                     let sanitizedHost = hostString.replacingOccurrences(of: match!.0, with: "")
                     
                     print("[sanitized] Resolved \(sanitizedHost):\(port)")
+                    
                     socketHost = sanitizedHost
                     socketPort = "\(port)"
                     connection.cancel()
@@ -137,40 +183,91 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         connection.start(queue: .global())
     }
     
+    func reconnectWebsocket() {
+        if socket == nil {
+            return
+        }
+        
+        socket!.disconnect()
+        self.openWebsocket()
+        //socket!.write(ping: "PING!".data(using: .utf8)!)
+    }
+    
     // Opens the websocket connection
     // TODO: host and port should be function arguments probably maybe
     private func openWebsocket() {
-        if let host = socketHost, let port = socketPort {
-            //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
-            var request = URLRequest(url: URL(string: "http://\(host):\(port)/websocket")!)
-            request.timeoutInterval = 5
-            socket = WebSocket(request: request)
-            socket.delegate = self
-            socket.connect()
+        //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
+        var request = URLRequest(url: URL(string: "http://\(socketHost):\(socketPort)/websocket")!)
+        request.timeoutInterval = 5
+        socket = WebSocket(request: request)
+        socket!.delegate = self
+        socket!.connect()
+        
+        // TODO: Check that this keeps the connection alive properly
+        Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [self] timer in
+            //self.checkWebsocketIsAlive()
         }
     }
     
-    // Old REST way to do it
-    // TODO: Stop using this.
-    func queryPrinterStats() async {
-        guard let url = URL(string: "http://10.0.21.39/printer/objects/query?extruder&virtual_sdcard&print_stats&heater_bed") else {
-            fatalError("Missing URL")
-        }
-        
-        let urlRequest = URLRequest(url: url)
-        do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                print("Error with response.")
-                return
+    // MARK: delegate callback for Starscream WebSocketClient
+    func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
+        switch event {
+        case .connected(let headers):
+            isConnected = true
+            print("websocket is connected: \(headers)")
+            writeToDebugLog("Connected to WebSocket")
+            let jsonRpcRequest = JsonRpcRequest(method: "printer.objects.subscribe",
+                                                params: ["objects":
+                                                            ["extruder": nil,
+                                                             "virtual_sdcard": nil,
+                                                             "heater_bed": nil,
+                                                             "print_stats": nil]
+                                                        ])
+            
+            print(String(data: try! JSONEncoder().encode(jsonRpcRequest), encoding: .utf8)!)
+            socket?.write(data: try! JSONEncoder().encode(jsonRpcRequest), completion: {
+                print("[send] json-rpc printer.objects.subscribe query")
+            })
+        case .disconnected(let reason, let code):
+            isConnected = false
+            print("websocket is disconnected: \(reason) with code: \(code)")
+            writeToDebugLog("Websocket is disconnected: \(reason) with code: \(code)")
+        case .text(let string):
+            self.writeToDebugLog(string)
+            // Check for initial RPC response
+            let statusResponse = try? JSONDecoder().decode(jsonRpcResponse.self, from: Data(string.utf8))
+            if let statusResponseSafe = statusResponse {
+                self.parse_response(statusResponseSafe)
             }
-            // handle data as JSON
-            let decoder = JSONDecoder()
-            printerObjectsQuery = try decoder.decode(PrinterObjectsQuery.self, from: data)
-            printerCommsOkay = true
-        } catch {
-            print("Exception thrown: \(error)")
-            printerCommsOkay = false
+            // Check for RPC updates
+            if let updateResponse = try? JSONDecoder().decode(jsonRpcUpdate.self, from: Data(string.utf8)) {
+                self.parse_update(updateResponse)
+            }
+        case .binary(let data):
+            self.writeToDebugLog(String(data: data, encoding: .utf8)!)
+            print("Received data: \(data.count)")
+        case .ping(_):
+            print("PING! \(Date())")
+            // TODO: There's probably a better way to do this
+            if(lastPingDate.addingTimeInterval(WEBSOCKET_TIMEOUT_INTERVAL) < Date.now) {
+                print("Forcing reconnection of websocket..")
+                self.reconnectWebsocket()
+            }
+            lastPingDate = Date()
+            break
+        case .pong(_):
+            print("PONG!")
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            isConnected = false
+        case .error(let error):
+            isConnected = false
+            print("[error] Starscream: \(error.debugDescription)")
         }
     }
+    
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
+		E16378B229A43CE1002F05E9 /* KlipperMonScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */; };
 		E180B5E92992CD9100425DB0 /* KlipperMonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */; };
 		E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EC2992CD9200425DB0 /* Assets.xcassets */; };
 		E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		E180B61F2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */; };
 		E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* PrinterRequestManager.swift */; };
 		E1E8B07729949E2700BABE4B /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E1E8B07629949E2700BABE4B /* Starscream */; };
+		E1E8B07929955ABE00BABE4B /* PrinterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8B07829955ABE00BABE4B /* PrinterStats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,7 @@
 /* Begin PBXFileReference section */
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
+		E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonScratchTests.swift; sourceTree = "<group>"; };
 		E180B5E52992CD9100425DB0 /* KlipperMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlipperMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180B5E82992CD9100425DB0 /* KlipperMonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonApp.swift; sourceTree = "<group>"; };
 		E180B5EC2992CD9200425DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterObjectsQuery.swift; sourceTree = "<group>"; };
 		E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlipperMonMenuBarExtraView.swift; sourceTree = "<group>"; };
 		E180B6212993256E00425DB0 /* PrinterRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManager.swift; sourceTree = "<group>"; };
+		E1E8B07829955ABE00BABE4B /* PrinterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				E180B61E2992DBB000425DB0 /* KlipperMonMenuBarExtraView.swift */,
 				E180B6212993256E00425DB0 /* PrinterRequestManager.swift */,
 				E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */,
+				E1E8B07829955ABE00BABE4B /* PrinterStats.swift */,
 			);
 			path = KlipperMon;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				E180B5FF2992CD9300425DB0 /* KlipperMonTests.swift */,
+				E16378B129A43CE1002F05E9 /* KlipperMonScratchTests.swift */,
 			);
 			path = KlipperMonTests;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E8B07929955ABE00BABE4B /* PrinterStats.swift in Sources */,
 				E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */,
 				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
 				E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */,
@@ -299,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E180B6002992CD9300425DB0 /* KlipperMonTests.swift in Sources */,
+				E16378B229A43CE1002F05E9 /* KlipperMonScratchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

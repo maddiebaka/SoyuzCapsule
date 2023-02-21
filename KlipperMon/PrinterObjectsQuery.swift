@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Root struct to decode for REST response
 struct PrinterObjectsQuery: Decodable {
     let result: ResultsData
 }
@@ -16,34 +17,76 @@ struct ResultsData: Decodable {
     let status: StatusData
 }
 
+// Individual update replies for JSON-RPC
+struct jsonRpcUpdate: Decodable {
+    let method: String?
+    let params: jsonRpcParams
+}
+
+struct jsonRpcParams: Decodable {
+    let status: StatusData?
+    let timestamp: Double?
+    
+    init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        self.status = try container.decode(StatusData.self)
+        self.timestamp = try container.decode(Double.self)
+    }
+}
+//
+//    public init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        do {
+//            self = .statusData(try container.decode(StatusData.self, forKey: .statusData))
+//        } catch DecodingError.keyNotFound {
+//            print("Error")
+//            self = .double(try container.decode(Double.self))
+//            //self = .timestamp(try container.decode(Double.self, forKey: .timestamp))
+//        }
+//
+//    }
+
+// Root structs to decode for JSON-RPC response
+struct jsonRpcResponse: Decodable  {
+    let result: jsonRpcResult
+    
+}
+
+struct jsonRpcResult: Decodable {
+    let eventtime: Double
+    let status: StatusData
+}
+
+// Shared data sub-structs
 struct StatusData: Decodable {
-    let virtual_sdcard: VirtualSDCardData
-    let extruder: ExtruderData
-    let print_stats: PrintStatsData
-    let heater_bed: HeaterBedData
+    let virtual_sdcard: VirtualSDCardData?
+    let extruder: ExtruderData?
+    let print_stats: PrintStatsData?
+    let heater_bed: HeaterBedData?
 }
 
 struct VirtualSDCardData: Decodable {
     let file_path: String?
-    let progress: Double
-    let is_active: Bool
+    let progress: Double?
+    let is_active: Bool?
 }
 
 struct ExtruderData: Decodable {
-    let temperature: Double
-    let target: Double
-    let power: Double
+    let temperature: Double?
+    let target: Double?
+    let power: Double?
 }
 
 struct PrintStatsData: Decodable {
-    let filename: String
-    let print_duration: Double
-    let filament_used: Double
-    let state: String
+    let filename: String?
+    let print_duration: Double?
+    let filament_used: Double?
+    let state: String?
 }
 
 struct HeaterBedData: Decodable {
-    let temperature: Double
-    let target: Double
-    let power: Double
+    let temperature: Double?
+    let target: Double?
+    let power: Double?
 }

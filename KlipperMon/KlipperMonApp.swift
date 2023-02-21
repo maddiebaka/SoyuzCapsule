@@ -14,16 +14,16 @@ struct KlipperMonMenuBarApp: App {
     @State var currentIcon = "move.3d"
     
     var body: some Scene {
-        WindowGroup(id: "floating-stats") {
-            KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                //.frame(width: 300, height: 140)
-        }
-        //.windowResizability(.contentSize)
+//        WindowGroup(id: "floating-stats") {
+//            KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//        }
         
-        Window("Configuration", id: "soyuz_cfg", content: {
+        WindowGroup("Configuration", id: "soyuz_cfg", content: {
             PrinterConfigView()
+                //.frame(minWidth: 300, maxWidth: 600, minHeight: 60, maxHeight: 100)
         })
+        .windowResizability(.contentSize)
         
         MenuBarExtra("Soyuz", systemImage: currentIcon) {
             KlipperMonMenuBarExtraView(currentMenuBarIcon: $currentIcon)

@@ -7,129 +7,94 @@
 
 import SwiftUI
 import AppKit
+import Network
 
 struct KlipperMonMenuBarExtraView: View {
+    // The threshhold considered a burn-risk, at which point certain UI elements turn red.
     let DANGERTEMP = 40.0
     
     @Environment(\.openWindow) var openWindow
     
     @ObservedObject var printerManager = PrinterRequestManager.shared
     
-    @State var printerObjectsQuery: PrinterObjectsQuery?
     @State var printPercentage: Double = 0
-    
-    // TODO: Don't forget, create @State variable for printer status (i.e. "Printing", etc)
-    // and programmatically add a "connecting" section
-    @State var printerStatus: String = ""
     
     @Binding var currentMenuBarIcon: String
     
     @State var hotendHotTemp: Bool = false
     @State var bedHotTemp: Bool = false
     
-    //@State var nwBrowserDiscoveredItems: [NWEndpoint] = []
-    
-    //var nwBrowser = NWBrowser(for: .bonjour(type: "_moonraker._tcp.", domain: "local."), using: .tcp)
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
     // TODO: Use @published API data instead of instance state variable
     var body: some View {
         VStack {
             // Printer Readouts
-            if let queryResults = printerManager.printerObjectsQuery {
-                Text(queryResults.result.status.print_stats.state.capitalized)
-                    .font(.title)
-                    .padding(4)
-                // Print information
-                HStack {
-                    Image(systemName: "pencil.tip")
-                        .rotationEffect(Angle(degrees: 180))
-                        .offset(x: 5.5, y: 4)
-                        .font(.system(size: 24))
-                    ProgressView(value: queryResults.result.status.virtual_sdcard.progress, total: 1.0)
-                        .progressViewStyle(.linear)
-                        .offset(x: 10)
-                    Text("\(Int(queryResults.result.status.virtual_sdcard.progress * 100))%")
-                        .padding(2)
-                        .padding([.leading], 8)
-                }
-                // Temperatures
-                HStack {
-                    // Hot-end temperature
+            //if let printerStats = printerManager.printerStats {
+            if(printerManager.isConnected) {
+                VStack {
+                    Text(printerManager.state.capitalized)
+                        .font(.title)
+                        .padding(4)
+                    // Print information
                     HStack {
-                        Image(systemName: "flame")
-                            .foregroundColor( hotendHotTemp ? .red : .white )
-                            .opacity( hotendHotTemp ? 1.0 : 0.3 )
-                        Text("Hotend")
-                            .font(.headline)
-                        Spacer()
-                        Text("\(Int(queryResults.result.status.extruder.temperature))°C")
+                        Image(systemName: "pencil.tip")
+                            .rotationEffect(Angle(degrees: 180))
+                            .offset(x: 5.5, y: 4)
+                            .font(.system(size: 24))
+                        ProgressView(value: printerManager.progress, total: 1.0)
+                            .progressViewStyle(.linear)
+                            .offset(x: 10)
+                        Text("\(Int(printerManager.progress * 100))%")
+                            .padding(2)
+                            .padding([.leading], 8)
                     }
-                    // Bed temperature
+                    // Temperatures
                     HStack {
-                        Image(systemName: "flame")
-                            .foregroundColor( bedHotTemp ? .red : .white )
-                            .opacity( bedHotTemp ? 1.0 : 0.3 )
-                        Text("Plate")
-                            .font(.headline)
-                        Spacer()
-                        Text("\(Int(queryResults.result.status.heater_bed.temperature))°C")
+                        // Hot-end temperature
+                        HStack {
+                            Image(systemName: "flame")
+                                .foregroundColor( printerManager.extruderTemperature > DANGERTEMP ? .red : .white )
+                                .opacity( printerManager.extruderTemperature > DANGERTEMP ? 1.0 : 0.3 )
+                            Text("Hotend")
+                                .font(.headline)
+                            Spacer()
+                            Text("\(Int(printerManager.extruderTemperature))°C")
+                        }
+                        // Bed temperature
+                        HStack {
+                            Image(systemName: "flame")
+                                .foregroundColor( printerManager.bedTemperature > DANGERTEMP ? .red : .white )
+                                .opacity( printerManager.bedTemperature > DANGERTEMP ? 1.0 : 0.3 )
+                            Text("Plate")
+                                .font(.headline)
+                            Spacer()
+                            Text("\(Int(printerManager.bedTemperature))°C")
+                        }
                     }
+                    Divider()
                 }
-                Divider()
             }
         }
-        .frame(minWidth: 220, minHeight: 100)
-        //        .overlay {
-        //            if !printerManager.printerCommsOkay {
-        //                RoundedRectangle(cornerRadius: 10, style: .circular)
-        //                    .foregroundColor(.black)
-        //                    .frame(minWidth: 300, minHeight: 100)
-        //                    .opacity(0.6)
-        //            }
-        //        }
+        //.frame(minWidth: 220, minHeight: 100)
         // Footer information
         HStack {
             Button {
                 print("Button pressed")
                 openWindow(id: "soyuz_cfg")
             } label: {
-                Text("Server Config")
+                Text("Printers")
                     .foregroundColor(.white)
             }
             Spacer()
-            if(printerManager.printerCommsOkay) {
+            if(printerManager.isConnected) {
                 Image(systemName: "network")
                 Text("Online")
             } else {
-                Image(systemName: "xmark")
+                Image(systemName: "exclamationmark.triangle")
                 Text("Offline")
             }
         }
-        .padding(4)
-        .frame(minWidth: 220, maxWidth: 250)
-        .onReceive(timer) { input in
-            Task {
-                //await printerManager.queryPrinterStats()
-                
-                if let query = printerManager.printerObjectsQuery {
-                    hotendHotTemp = (query.result.status.extruder.temperature > DANGERTEMP) ? true : false
-                    bedHotTemp = (query.result.status.heater_bed.temperature > DANGERTEMP) ? true : false
-                    printerStatus = query.result.status.print_stats.state.capitalized
-                } else {
-                    printerStatus = "Connecting..."
-                }
-            }
-        }
-        // Testing bonjour stuff
-        ForEach(printerManager.nwBrowserDiscoveredItems, id: \.hashValue) { endpoint in
-            Button {
-                printerManager.resolveBonjourHost(endpoint)
-            } label: {
-                Text(endpoint.debugDescription)
-            }
-        }
+        .padding(2)
+        .frame(minWidth: 220, maxWidth: 375)
     }
 }
 
