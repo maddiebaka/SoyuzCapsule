@@ -9,6 +9,28 @@ import Foundation
 import Network
 import Starscream
 
+// MARK: Bonjour Protocol
+
+protocol NetworkDiscoveryEngine {
+    func startScan(queue: DispatchQueue)
+    func setBrowseResultsChangedHandler(_ handler: @escaping ((Set<NWBrowser.Result>, Set<NWBrowser.Result.Change>) -> Void))
+    func setStateUpdateHandler(_ handler: @escaping ((NWBrowser.State) -> Void))
+}
+
+extension NWBrowser: NetworkDiscoveryEngine {
+    func startScan(queue: DispatchQueue) {
+        start(queue: queue)
+    }
+    func setBrowseResultsChangedHandler(_ handler: @escaping ((Set<NWBrowser.Result>, Set<NWBrowser.Result.Change>) -> Void)) {
+        self.browseResultsChangedHandler = handler
+    }
+    func setStateUpdateHandler(_ handler: @escaping ((State) -> Void)) {
+        self.stateUpdateHandler = handler
+    }
+}
+
+// MARK: Starscream Protocol
+
 struct JsonRpcRequest: Codable {
     var jsonrpc = "2.0"
     let method: String
@@ -67,7 +89,8 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
     @Published var socketHost: String
     @Published var socketPort: String
     
-    let nwBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)
+    let nwBrowser: NetworkDiscoveryEngine
+    //let nwBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)
     var connection: NWConnection!
     
     var socket: WebSocket?
@@ -101,13 +124,14 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         }
     }
     
-    private init() {
+    private init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
         state = ""
         progress = 0.0
         extruderTemperature = 0.0
         bedTemperature = 0.0
         socketHost = ""
         socketPort = ""
+        nwBrowser = browser
         //reconnectionTimer = nil
         
         // MARK: Debug stuff
@@ -121,15 +145,15 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         }
         
         // MARK: Bonjour browser initialization at instantiation
-        nwBrowser.browseResultsChangedHandler = { (newResults, changes) in
+        nwBrowser.setBrowseResultsChangedHandler({ (newResults, changes) in
             print("[update] Results changed.")
             newResults.forEach { result in
                 print(result)
                 self.nwBrowserDiscoveredItems.append(result)
             }
-        }
+        })
         // Bonjour browser state update handler
-        nwBrowser.stateUpdateHandler = { newState in
+        nwBrowser.setStateUpdateHandler({ newState in
             switch newState {
             case .failed(let error):
                 print("[error] nwbrowser: \(error)")
@@ -140,9 +164,9 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
             default:
                 break
             }
-        }
+        })
         // Start up the bonjour browser, get results and process them in the update handler
-        nwBrowser.start(queue: DispatchQueue.main)
+        nwBrowser.startScan(queue: DispatchQueue.main)
     }
     
     // Called from the UI with an endpoint.
