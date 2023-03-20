@@ -7,6 +7,7 @@
 
 import Foundation
 import Network
+import AppKit
 import Starscream
 
 // MARK: Bonjour Protocol
@@ -17,13 +18,22 @@ protocol NetworkDiscoveryEngine {
     func setStateUpdateHandler(_ handler: @escaping ((NWBrowser.State) -> Void))
 }
 
+//protocol NDEResult {
+//    var endpoint: NWEndpoint { get }
+//    var interface: [NWInterface] { get }
+//    var metadata: NWBrowser.Result.Metadata { get }
+//}
+
 extension NWBrowser: NetworkDiscoveryEngine {
+//class NDEngine: NetworkDiscoveryEngine,
     func startScan(queue: DispatchQueue) {
         start(queue: queue)
     }
+    
     func setBrowseResultsChangedHandler(_ handler: @escaping ((Set<NWBrowser.Result>, Set<NWBrowser.Result.Change>) -> Void)) {
         self.browseResultsChangedHandler = handler
     }
+    
     func setStateUpdateHandler(_ handler: @escaping ((State) -> Void)) {
         self.stateUpdateHandler = handler
     }
@@ -49,8 +59,6 @@ struct JsonRpcRequest: Codable {
 //@MainActor
 class PrinterRequestManager: ObservableObject, WebSocketDelegate {
     let WEBSOCKET_TIMEOUT_INTERVAL: TimeInterval = 60.0
-    
-    static let shared = PrinterRequestManager()
     
     // Debug stuff
     let startDate = Date()
@@ -96,8 +104,6 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
     var socket: WebSocket?
     var lastPingDate = Date()
     
-    // TODO: Set this up to actually reconnect
-    
     // Parse a JSON-RPC query-response message
     func parse_response(_ response: jsonRpcResponse) {
         state = response.result.status.print_stats?.state ?? ""
@@ -124,7 +130,7 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         }
     }
     
-    private init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
+    init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
         state = ""
         progress = 0.0
         extruderTemperature = 0.0
@@ -167,6 +173,38 @@ class PrinterRequestManager: ObservableObject, WebSocketDelegate {
         })
         // Start up the bonjour browser, get results and process them in the update handler
         nwBrowser.startScan(queue: DispatchQueue.main)
+        
+        // Screen sleep functionality
+//        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(screenDidSleep(_:)), name: NSWorkspace.screensDidSleepNotification, object: nil)
+//        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(screenDidWake(_:)), name: NSWorkspace.screensDidWakeNotification, object: nil)
+        let center = NSWorkspace.shared.notificationCenter;
+        let mainQueue = OperationQueue.main
+        
+        center.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: mainQueue) { notification in
+            self.screenChangedSleepState(notification)
+        }
+        
+        center.addObserver(forName: NSWorkspace.screensDidSleepNotification, object: nil, queue: mainQueue) { notification in
+            self.screenChangedSleepState(notification)
+        }
+    }
+    
+    func screenChangedSleepState(_ notification: Notification) {
+        switch(notification.name) {
+        case NSWorkspace.screensDidSleepNotification:
+            socket?.disconnect()
+        case NSWorkspace.screensDidWakeNotification:
+            self.openWebsocket()
+        default:
+            return
+        }
+    }
+    
+    func screenDidWake(_ notification: Notification) {
+        print("Screen woke: \(notification.name)")
+        if socket != nil {
+            self.openWebsocket()
+        }
     }
     
     // Called from the UI with an endpoint.

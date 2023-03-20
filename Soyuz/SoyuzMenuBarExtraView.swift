@@ -15,7 +15,7 @@ struct SoyuzMenuBarExtraView: View {
     
     @Environment(\.openWindow) var openWindow
     
-    @ObservedObject var printerManager = PrinterRequestManager.shared
+    @ObservedObject var printerManager: PrinterRequestManager
     
     @State var printPercentage: Double = 0
     
@@ -100,8 +100,10 @@ struct SoyuzMenuBarExtraView: View {
 
 struct KlipperMonMenuBarExtraView_Previews: PreviewProvider {
     @State static var currentMenuBarIcon = "move.3d"
+    @State static var printerManager = PrinterRequestManager()
+    
     static var previews: some View {
-        SoyuzMenuBarExtraView(currentMenuBarIcon: $currentMenuBarIcon)
+        SoyuzMenuBarExtraView(printerManager: printerManager, currentMenuBarIcon: $currentMenuBarIcon)
     }
 }
 

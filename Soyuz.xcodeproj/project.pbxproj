@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
 		E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */; };
-		E16378B429A491E6002F05E9 /* PrinterRequestsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* PrinterRequestsManagerTests.swift */; };
+		E16378B429A491E6002F05E9 /* PrinterRequestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */; };
 		E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* SoyuzApp.swift */; };
 		E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EC2992CD9200425DB0 /* Assets.xcassets */; };
 		E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */; };
@@ -46,7 +46,7 @@
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
 		E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzScratchTests.swift; sourceTree = "<group>"; };
-		E16378B329A491E6002F05E9 /* PrinterRequestsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestsManagerTests.swift; sourceTree = "<group>"; };
+		E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManagerTests.swift; sourceTree = "<group>"; };
 		E180B5E52992CD9100425DB0 /* Soyuz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soyuz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180B5E82992CD9100425DB0 /* SoyuzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzApp.swift; sourceTree = "<group>"; };
 		E180B5EC2992CD9200425DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			children = (
 				E180B5FF2992CD9300425DB0 /* SoyuzTests.swift */,
 				E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */,
-				E16378B329A491E6002F05E9 /* PrinterRequestsManagerTests.swift */,
+				E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */,
 			);
 			path = SoyuzTests;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E180B6002992CD9300425DB0 /* SoyuzTests.swift in Sources */,
-				E16378B429A491E6002F05E9 /* PrinterRequestsManagerTests.swift in Sources */,
+				E16378B429A491E6002F05E9 /* PrinterRequestManagerTests.swift in Sources */,
 				E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

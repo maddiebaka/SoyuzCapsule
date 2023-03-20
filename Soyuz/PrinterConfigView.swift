@@ -9,7 +9,7 @@ import SwiftUI
 import Network
 
 struct PrinterConfigView: View {
-    @ObservedObject var printerManager = PrinterRequestManager.shared
+    @ObservedObject var printerManager: PrinterRequestManager
     
     var body: some View {
         VStack {
@@ -52,8 +52,10 @@ struct PrinterConfigView: View {
 }
 
 struct PrinterConfigView_Previews: PreviewProvider {
+    @State static var printerManager = PrinterRequestManager()
+    
     static var previews: some View {
-        PrinterConfigView()
+        PrinterConfigView(printerManager: printerManager)
     }
 }
 
