@@ -22,7 +22,6 @@
 		E180B61F2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */; };
 		E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* PrinterRequestManager.swift */; };
 		E1E8B07729949E2700BABE4B /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E1E8B07629949E2700BABE4B /* Starscream */; };
-		E1E8B07929955ABE00BABE4B /* PrinterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8B07829955ABE00BABE4B /* PrinterStats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterObjectsQuery.swift; sourceTree = "<group>"; };
 		E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzMenuBarExtraView.swift; sourceTree = "<group>"; };
 		E180B6212993256E00425DB0 /* PrinterRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManager.swift; sourceTree = "<group>"; };
-		E1E8B07829955ABE00BABE4B /* PrinterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +112,8 @@
 		E180B5E72992CD9100425DB0 /* Soyuz */ = {
 			isa = PBXGroup;
 			children = (
+				E1A93C6529C92B3500BAE750 /* ViewModels */,
+				E1A93C6429C92AEE00BAE750 /* Views */,
 				E124B9D72993FE5500C0D2D2 /* Info.plist */,
 				E180B5E82992CD9100425DB0 /* SoyuzApp.swift */,
 				E180B5EC2992CD9200425DB0 /* Assets.xcassets */,
@@ -121,11 +121,6 @@
 				E180B5F62992CD9200425DB0 /* Soyuz.entitlements */,
 				E180B5F32992CD9200425DB0 /* KlipperMon.xcdatamodeld */,
 				E180B5EE2992CD9200425DB0 /* Preview Content */,
-				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
-				E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */,
-				E180B6212993256E00425DB0 /* PrinterRequestManager.swift */,
-				E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */,
-				E1E8B07829955ABE00BABE4B /* PrinterStats.swift */,
 			);
 			path = Soyuz;
 			sourceTree = "<group>";
@@ -155,6 +150,24 @@
 				E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */,
 			);
 			path = SoyuzUITests;
+			sourceTree = "<group>";
+		};
+		E1A93C6429C92AEE00BAE750 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */,
+				E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1A93C6529C92B3500BAE750 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
+				E180B6212993256E00425DB0 /* PrinterRequestManager.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E8B07929955ABE00BABE4B /* PrinterStats.swift in Sources */,
 				E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */,
 				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
 				E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */,

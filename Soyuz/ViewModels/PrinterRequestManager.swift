@@ -18,14 +18,7 @@ protocol NetworkDiscoveryEngine {
     func setStateUpdateHandler(_ handler: @escaping ((NWBrowser.State) -> Void))
 }
 
-//protocol NDEResult {
-//    var endpoint: NWEndpoint { get }
-//    var interface: [NWInterface] { get }
-//    var metadata: NWBrowser.Result.Metadata { get }
-//}
-
 extension NWBrowser: NetworkDiscoveryEngine {
-//class NDEngine: NetworkDiscoveryEngine,
     func startScan(queue: DispatchQueue) {
         start(queue: queue)
     }

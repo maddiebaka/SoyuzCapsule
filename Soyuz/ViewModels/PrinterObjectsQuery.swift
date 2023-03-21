@@ -33,19 +33,6 @@ struct jsonRpcParams: Decodable {
         self.timestamp = try container.decode(Double.self)
     }
 }
-//
-//    public init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        do {
-//            self = .statusData(try container.decode(StatusData.self, forKey: .statusData))
-//        } catch DecodingError.keyNotFound {
-//            print("Error")
-//            self = .double(try container.decode(Double.self))
-//            //self = .timestamp(try container.decode(Double.self, forKey: .timestamp))
-//        }
-//
-//    }
 
 // Root structs to decode for JSON-RPC response
 struct jsonRpcResponse: Decodable  {
