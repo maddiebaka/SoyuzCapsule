@@ -13,7 +13,7 @@ struct SoyuzApp: App {
     
     @State var currentIcon = "move.3d"
     
-    @ObservedObject var printerManager = PrinterRequestManager()
+    @ObservedObject static var printerManager = PrinterRequestManager()
     
     var body: some Scene {
 //        WindowGroup(id: "floating-stats") {
@@ -22,13 +22,13 @@ struct SoyuzApp: App {
 //        }
         
         WindowGroup("Configuration", id: "soyuz_cfg", content: {
-            PrinterConfigView(printerManager: printerManager)
+            PrinterConfigView(printerManager: SoyuzApp.printerManager)
                 //.frame(minWidth: 300, maxWidth: 600, minHeight: 60, maxHeight: 100)
         })
         .windowResizability(.contentSize)
         
         MenuBarExtra("Soyuz", systemImage: currentIcon) {
-            SoyuzMenuBarExtraView(printerManager: printerManager, currentMenuBarIcon: $currentIcon)
+            SoyuzMenuBarExtraView(printerManager: SoyuzApp.printerManager, currentMenuBarIcon: $currentIcon)
                 .padding([.top, .leading, .trailing], 8)
                 .padding([.bottom], 6)
         }

@@ -33,7 +33,7 @@ struct PrinterConfigView: View {
                         HStack {
                             Text(result.endpoint.toFriendlyString())
                             Button {
-                                printerManager.resolveBonjourHost(result.endpoint)
+                                printerManager.connectToBonjourEndpoint(result.endpoint)
                             } label: {
                                 Text("Connect")
                                     .foregroundColor(.white)
