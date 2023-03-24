@@ -8,18 +8,20 @@
 import SwiftUI
 import Network
 
+// MARK: PrinterConfigView
 struct PrinterConfigView: View {
     @ObservedObject var printerManager: PrinterRequestManager
+    @ObservedObject var bonjourBrowser = BonjourBrowser()
     
     var body: some View {
         VStack {
             if(printerManager.isConnected) {
                 HStack {
                     Image(systemName: "network")
-                    Text(printerManager.connection.endpoint.toFriendlyString())
+                    Text(printerManager.connection?.endpoint.toFriendlyString() ?? "Unknown Host")
                     Text("\(printerManager.socketHost):\(printerManager.socketPort)")
                     Button {
-                        printerManager.socket?.disconnect()
+                        printerManager.disconnect()
                     } label: {
                         Text("Disconnect")
                     }
@@ -29,7 +31,7 @@ struct PrinterConfigView: View {
                 VStack {
                     Text("Auto-detected Printers")
                         .font(.title)
-                    ForEach(printerManager.nwBrowserDiscoveredItems, id: \.hashValue) { result in
+                    ForEach(bonjourBrowser.NDEngineResults , id: \.hashValue) { result in
                         HStack {
                             Text(result.endpoint.toFriendlyString())
                             Button {

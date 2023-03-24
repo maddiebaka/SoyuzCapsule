@@ -14,20 +14,20 @@ class PrinterRequestManagerTests: XCTestCase {
     
     var testBonjourListener: NWListener?
     
-    override func setUp() {
-        printerRequestManager = PrinterRequestManager(browser: NWBrowser(for: .bonjour(type: "_http._tcp", domain: "local."), using: .tcp))
-        
-        // Set up test bonjour server
-        //let parameters = NWParameters(tls: .none, tcp: NWListener.)
-        do {
-            testBonjourListener = try NWListener(using: .tcp, on: .http)
-            testBonjourListener!.start(queue: DispatchQueue.main)
-        } catch {
-            print("Error: \(error)")
-        }
-    }
-    
-    func testBonjourDiscoveredItemsNotNil() {
-        XCTAssertNotNil(printerRequestManager?.nwBrowserDiscoveredItems)
-    }
+//    override func setUp() {
+//        printerRequestManager = PrinterRequestManager(browser: NWBrowser(for: .bonjour(type: "_http._tcp", domain: "local."), using: .tcp))
+//        
+//        // Set up test bonjour server
+//        //let parameters = NWParameters(tls: .none, tcp: NWListener.)
+//        do {
+//            testBonjourListener = try NWListener(using: .tcp, on: .http)
+//            testBonjourListener!.start(queue: DispatchQueue.main)
+//        } catch {
+//            print("Error: \(error)")
+//        }
+//    }
+//    
+//    func testBonjourDiscoveredItemsNotNil() {
+//        XCTAssertNotNil(printerRequestManager?.nwBrowserDiscoveredItems)
+//    }
 }

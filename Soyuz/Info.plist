@@ -17,6 +17,7 @@
 	</array>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_xctest._tcp.</string>
 		<string>_moonraker._tcp.</string>
 		<string>_http._tcp.</string>
 	</array>
