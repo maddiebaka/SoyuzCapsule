@@ -29,7 +29,7 @@ class SoyuzBonjourBrowserTests: XCTestCase {
         bonjourBrowser = BonjourBrowser(browser: NWBrowser(for: .bonjour(type: "_xctest._tcp", domain: "local."), using: .tcp))
     }
     
-    func testBonjourDiscoveredItemsNotNil() {
+    func testBonjourDiscoveredItemsPopulated() {
         guard let browser = bonjourBrowser else {
             XCTAssert(false)
             return

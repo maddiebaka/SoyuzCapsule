@@ -10,7 +10,7 @@ import Network
 
 // MARK: PrinterConfigView
 struct PrinterConfigView: View {
-    @ObservedObject var printerManager: PrinterRequestManager
+    @ObservedObject var printerManager: MoonrakerSocketManager
     @ObservedObject var bonjourBrowser = BonjourBrowser()
     
     var body: some View {
@@ -54,7 +54,7 @@ struct PrinterConfigView: View {
 }
 
 struct PrinterConfigView_Previews: PreviewProvider {
-    @State static var printerManager = PrinterRequestManager()
+    @State static var printerManager = MoonrakerSocketManager()
     
     static var previews: some View {
         PrinterConfigView(printerManager: printerManager)

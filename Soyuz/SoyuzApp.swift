@@ -13,7 +13,7 @@ struct SoyuzApp: App {
     
     @State var currentIcon = "move.3d"
     
-    @ObservedObject static var printerManager = PrinterRequestManager()
+    @ObservedObject static var printerManager = MoonrakerSocketManager()
     
     var body: some Scene {
 //        WindowGroup(id: "floating-stats") {

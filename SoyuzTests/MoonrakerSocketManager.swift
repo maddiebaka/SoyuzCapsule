@@ -6,13 +6,40 @@
 //
 
 import XCTest
+import Starscream
 import Network
 @testable import Soyuz
 
 class PrinterRequestManagerTests: XCTestCase {
-    var printerRequestManager: PrinterRequestManager?
+    var socketManager: MoonrakerSocketManager?
     
-    var testBonjourListener: NWListener?
+    // Server-side test variables
+    let server = WebSocketServer()
+    let address = "localhost"
+    let port: UInt16 = 80
+    
+    override func setUp() {
+        let server = WebSocketServer()
+        
+        let error = server.start(address: address, port: port)
+        
+        if let err = error {
+            print("Error starting WebSocket server: \(err)")
+        }
+        
+       socketManager = MoonrakerSocketManager()
+    }
+    
+    func testBlah() {
+        guard let url = URL(string: "\(address):\(port)") else {
+            return
+        }
+        print("Success")
+        let endpoint = NWEndpoint.url(url)
+        print(endpoint.debugDescription)
+        socketManager?.connectToBonjourEndpoint(endpoint)
+        return
+    }
     
 //    override func setUp() {
 //        printerRequestManager = PrinterRequestManager(browser: NWBrowser(for: .bonjour(type: "_http._tcp", domain: "local."), using: .tcp))

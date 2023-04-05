@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
 		E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */; };
-		E16378B429A491E6002F05E9 /* PrinterRequestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */; };
+		E16378B429A491E6002F05E9 /* MoonrakerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* MoonrakerSocketManager.swift */; };
 		E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* SoyuzApp.swift */; };
 		E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EC2992CD9200425DB0 /* Assets.xcassets */; };
 		E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E180B5EF2992CD9200425DB0 /* Preview Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		E180B60C2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */; };
 		E180B61D2992D53700425DB0 /* PrinterObjectsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */; };
 		E180B61F2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */; };
-		E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* PrinterRequestManager.swift */; };
+		E180B6222993256E00425DB0 /* MoonrakerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B6212993256E00425DB0 /* MoonrakerSocketManager.swift */; };
 		E1A93C6729C932E200BAE750 /* BonjourBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A93C6629C932E200BAE750 /* BonjourBrowser.swift */; };
 		E1A93C6929CD627100BAE750 /* BonjourBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A93C6829CD627100BAE750 /* BonjourBrowserTests.swift */; };
 		E1E8B07729949E2700BABE4B /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E1E8B07629949E2700BABE4B /* Starscream */; };
@@ -47,7 +47,7 @@
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
 		E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzScratchTests.swift; sourceTree = "<group>"; };
-		E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManagerTests.swift; sourceTree = "<group>"; };
+		E16378B329A491E6002F05E9 /* MoonrakerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonrakerSocketManager.swift; sourceTree = "<group>"; };
 		E180B5E52992CD9100425DB0 /* Soyuz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soyuz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180B5E82992CD9100425DB0 /* SoyuzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzApp.swift; sourceTree = "<group>"; };
 		E180B5EC2992CD9200425DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		E180B60B2992CD9300425DB0 /* SoyuzUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterObjectsQuery.swift; sourceTree = "<group>"; };
 		E180B61E2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyuzMenuBarExtraView.swift; sourceTree = "<group>"; };
-		E180B6212993256E00425DB0 /* PrinterRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterRequestManager.swift; sourceTree = "<group>"; };
+		E180B6212993256E00425DB0 /* MoonrakerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonrakerSocketManager.swift; sourceTree = "<group>"; };
 		E1A93C6629C932E200BAE750 /* BonjourBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourBrowser.swift; sourceTree = "<group>"; };
 		E1A93C6829CD627100BAE750 /* BonjourBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BonjourBrowserTests.swift; path = SoyuzTests/BonjourBrowserTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -143,7 +143,7 @@
 				E180B5FF2992CD9300425DB0 /* SoyuzTests.swift */,
 				E16378B129A43CE1002F05E9 /* SoyuzScratchTests.swift */,
 				E1A93C6829CD627100BAE750 /* BonjourBrowserTests.swift */,
-				E16378B329A491E6002F05E9 /* PrinterRequestManagerTests.swift */,
+				E16378B329A491E6002F05E9 /* MoonrakerSocketManager.swift */,
 			);
 			path = SoyuzTests;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
-				E180B6212993256E00425DB0 /* PrinterRequestManager.swift */,
+				E180B6212993256E00425DB0 /* MoonrakerSocketManager.swift */,
 				E1A93C6629C932E200BAE750 /* BonjourBrowser.swift */,
 			);
 			path = ViewModels;
@@ -318,7 +318,7 @@
 				E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */,
 				E1A93C6729C932E200BAE750 /* BonjourBrowser.swift in Sources */,
 				E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */,
-				E180B6222993256E00425DB0 /* PrinterRequestManager.swift in Sources */,
+				E180B6222993256E00425DB0 /* MoonrakerSocketManager.swift in Sources */,
 				E180B61F2992DBB000425DB0 /* SoyuzMenuBarExtraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E180B6002992CD9300425DB0 /* SoyuzTests.swift in Sources */,
-				E16378B429A491E6002F05E9 /* PrinterRequestManagerTests.swift in Sources */,
+				E16378B429A491E6002F05E9 /* MoonrakerSocketManager.swift in Sources */,
 				E1A93C6929CD627100BAE750 /* BonjourBrowserTests.swift in Sources */,
 				E16378B229A43CE1002F05E9 /* SoyuzScratchTests.swift in Sources */,
 			);

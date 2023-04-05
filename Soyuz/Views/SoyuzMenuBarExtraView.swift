@@ -11,11 +11,12 @@ import Network
 
 struct SoyuzMenuBarExtraView: View {
     // The threshhold considered a burn-risk, at which point certain UI elements turn red.
+    // Measured in degrees Celsius
     let DANGERTEMP = 40.0
     
     @Environment(\.openWindow) var openWindow
     
-    @ObservedObject var printerManager: PrinterRequestManager
+    @ObservedObject var printerManager: MoonrakerSocketManager
     
     @State var printPercentage: Double = 0
     
@@ -100,7 +101,7 @@ struct SoyuzMenuBarExtraView: View {
 
 struct KlipperMonMenuBarExtraView_Previews: PreviewProvider {
     @State static var currentMenuBarIcon = "move.3d"
-    @State static var printerManager = PrinterRequestManager()
+    @State static var printerManager = MoonrakerSocketManager()
     
     static var previews: some View {
         SoyuzMenuBarExtraView(printerManager: printerManager, currentMenuBarIcon: $currentMenuBarIcon)

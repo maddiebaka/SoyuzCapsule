@@ -13,7 +13,7 @@ import Starscream
 
 // MARK: PrinterRequestManager
 //@MainActor
-class PrinterRequestManager: ObservableObject, WebSocketDelegate {
+class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     let WEBSOCKET_TIMEOUT_INTERVAL: TimeInterval = 60.0
     
     // Websocket JSON-RPC published data

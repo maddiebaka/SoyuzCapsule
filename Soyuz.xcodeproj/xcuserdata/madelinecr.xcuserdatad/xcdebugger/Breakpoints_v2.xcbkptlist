@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E361E24C-A6D3-4C02-B11D-290874A15033"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SoyuzTests/MoonrakerSocketManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "testBlah()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E361E24C-A6D3-4C02-B11D-290874A15033 - 16ea1fa406b6a8b5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SoyuzTests.PrinterRequestManagerTests.testBlah() -&gt; ()"
+                  moduleName = "SoyuzTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/SNAP/Users/averyadapace/Code/MacOS/KlipperMon/SoyuzTests/MoonrakerSocketManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "404">
+               </Location>
+               <Location
+                  uuid = "E361E24C-A6D3-4C02-B11D-290874A15033 - 16ea1fa406b6a8b5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SoyuzTests.PrinterRequestManagerTests.testBlah() -&gt; ()"
+                  moduleName = "SoyuzTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/SNAP/Users/averyadapace/Code/MacOS/KlipperMon/SoyuzTests/MoonrakerSocketManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "820">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
