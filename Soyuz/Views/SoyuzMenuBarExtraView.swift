@@ -83,7 +83,7 @@ struct SoyuzMenuBarExtraView: View {
                 openWindow(id: "soyuz_cfg")
             } label: {
                 Text("Printers")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("ButtonForegroundColor"))
             }
             Spacer()
             if(printerManager.isConnected) {

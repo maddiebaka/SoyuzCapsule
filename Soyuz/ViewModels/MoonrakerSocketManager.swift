@@ -1,5 +1,5 @@
 //
-//  PrinterRequestManager.swift
+//  MoonrakerSocketManager.swift
 //  KlipperMon
 //
 //  Created by maddiefuzz on 2/7/23.
@@ -11,8 +11,6 @@ import AppKit
 import Starscream
 
 
-// MARK: PrinterRequestManager
-//@MainActor
 class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     let WEBSOCKET_TIMEOUT_INTERVAL: TimeInterval = 60.0
     
@@ -32,16 +30,19 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     
     private var socket: WebSocket?
     private var lastPingDate = Date()
+    private var starscreamEngine: Engine
     
     
     // MARK: PRM init()
-    init() {
+    init(starscreamEngine: Engine = WSEngine(transport: TCPTransport())) {
         state = ""
         progress = 0.0
         extruderTemperature = 0.0
         bedTemperature = 0.0
         socketHost = ""
         socketPort = ""
+        
+        self.starscreamEngine = starscreamEngine
         
         // Set up sleep/wake notification observers
         let center = NSWorkspace.shared.notificationCenter;
@@ -80,7 +81,8 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
                     let hostString = "\(host)"
                     let regex = try! Regex("%(.+)")
                     let match = hostString.firstMatch(of: regex)
-                    let sanitizedHost = hostString.replacingOccurrences(of: match!.0, with: "")
+                    
+                    let sanitizedHost = hostString.replacingOccurrences(of: match?.0 ?? "", with: "")
                     
                     print("[sanitized] Resolved \(sanitizedHost):\(port)")
                     
@@ -111,8 +113,9 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
         var request = URLRequest(url: URL(string: "http://\(socketHost):\(socketPort)/websocket")!)
         request.timeoutInterval = 5
-        socket = WebSocket(request: request)
+        socket = WebSocket(request: request, engine: starscreamEngine)
         socket!.delegate = self
+        print("About to connect to WebSocket at: \(request.debugDescription)")
         socket!.connect()
     }
     
@@ -125,7 +128,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         self.openWebsocket()
     }
     
-    // MARK: Callsbacks
+    // MARK: Callbacks
     func screenChangedSleepState(_ notification: Notification) {
         switch(notification.name) {
         case NSWorkspace.screensDidSleepNotification:

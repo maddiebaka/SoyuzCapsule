@@ -38,7 +38,7 @@ struct PrinterConfigView: View {
                                 printerManager.connectToBonjourEndpoint(result.endpoint)
                             } label: {
                                 Text("Connect")
-                                    .foregroundColor(.white)
+                                    //.foregroundColor(.white)
                                     .padding()
                             }
                         }
