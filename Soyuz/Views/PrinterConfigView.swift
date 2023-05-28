@@ -13,24 +13,54 @@ struct PrinterConfigView: View {
     @ObservedObject var printerManager: MoonrakerSocketManager
     @ObservedObject var bonjourBrowser = BonjourBrowser()
     
+    @Environment(\.openURL) private var openURL
+    
+    
     var body: some View {
         VStack {
             if(printerManager.isConnected) {
-                HStack {
-                    Image(systemName: "network")
-                    Text(printerManager.connection?.endpoint.toFriendlyString() ?? "Unknown Host")
-                    Text("\(printerManager.socketHost):\(printerManager.socketPort)")
-                    Button {
-                        printerManager.disconnect()
-                    } label: {
-                        Text("Disconnect")
+                VStack {
+                    Text("Soyuz Capsule is running in your menubar")
+                        .font(.title)
+                        .padding(4)
+                    Image("menubar")
+                        .resizable()
+                        .frame(width: 225, height: 100)
+                        .padding([.top], 2)
+                        .padding([.leading, .trailing, .bottom], 8)
+                    HStack {
+                        Image(systemName: "network")
+                        Text(printerManager.friendlyHostname)
+                        Text("\(printerManager.socketHost):\(printerManager.socketPort)")
+                        Button {
+                            printerManager.disconnect()
+                        } label: {
+                            Text("Disconnect")
+                        }
                     }
                 }
-                .frame(width: 500, height: 80)
+                .frame(width: 500, height: 200)
             } else {
                 VStack {
-                    Text("Auto-detected Printers")
-                        .font(.title)
+                    HStack {
+                        Text("Auto-detected Printers")
+                            .font(.title)
+                        // Help button
+                        Button {
+                            let locBookName = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String
+                            NSHelpManager.shared.openHelpAnchor("bonjour", inBook: locBookName)
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .strokeBorder(Color(NSColor.controlShadowColor), lineWidth: 0.5)
+                                    .background(Circle().foregroundColor(Color(NSColor.controlColor)))
+                                    .shadow(color: Color(NSColor.controlShadowColor).opacity(0.3), radius: 1)
+                                    .frame(width: 20, height: 20)
+                                Text("?").font(.system(size: 15, weight: .medium ))
+                            }
+                        }.buttonStyle(PlainButtonStyle())
+
+                    }
                     ForEach(bonjourBrowser.NDEngineResults , id: \.hashValue) { result in
                         HStack {
                             Text(result.endpoint.toFriendlyString())
@@ -48,7 +78,7 @@ struct PrinterConfigView: View {
             }
         }
         .onAppear {
-            NSApplication.shared.activate(ignoringOtherApps: true)
+            //NSApplication.shared.activate(ignoringOtherApps: true)
         }
     }
 }

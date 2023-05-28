@@ -27,6 +27,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     
     // Published NWConnection for listing connection information
     @Published var connection: NWConnection?
+    @Published var friendlyHostname: String = ""
     
     private var socket: WebSocket?
     private var lastPingDate = Date()
@@ -66,6 +67,11 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
             print("\(key): \(value)")
         })
         
+//        if isConnected == true {
+//            connection?.cancel()
+//            socket?.disconnect()
+//        }
+//
         if connection == nil {
             connection = NWConnection(to: endpoint, using: .tcp)
         }
@@ -89,6 +95,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
                     connection?.cancel()
                     
                     DispatchQueue.main.async {
+                        friendlyHostname = endpoint.toFriendlyString()
                         self.socketHost = sanitizedHost
                         self.socketPort = "\(port)"
                         self.openWebsocket()
@@ -102,6 +109,10 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     }
     
     func disconnect() {
+        print("disconnect() called")
+        isConnected = false
+        //connection?.cancel()
+        connection = nil
         socket?.disconnect()
     }
 
@@ -110,17 +121,25 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     
     // Opens the websocket connection
     private func openWebsocket() {
-        //let fullUrlString = "http://\(socketHost):\(socketPort)/websocket"
+        // Exit function if there is no server to connect to
+        if socketHost.isEmpty || socketPort.isEmpty {
+            return
+        }
+        
+        lastPingDate = Date.now
+        
         var request = URLRequest(url: URL(string: "http://\(socketHost):\(socketPort)/websocket")!)
-        request.timeoutInterval = 5
+        request.timeoutInterval = 30
         socket = WebSocket(request: request, engine: starscreamEngine)
         socket!.delegate = self
         print("About to connect to WebSocket at: \(request.debugDescription)")
         socket!.connect()
     }
     
+    // TODO: This may not work properly when already connected to the socket
     private func reconnectWebsocket() {
         if socket == nil {
+            print("Socket doesn't exist. Fail-safe triggered.")
             return
         }
         
@@ -132,8 +151,10 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     func screenChangedSleepState(_ notification: Notification) {
         switch(notification.name) {
         case NSWorkspace.screensDidSleepNotification:
+            print("Screen slept. Disconnecting..")
             socket?.disconnect()
         case NSWorkspace.screensDidWakeNotification:
+            print("Screen awoke. Opening websocket..")
             self.openWebsocket()
         default:
             return

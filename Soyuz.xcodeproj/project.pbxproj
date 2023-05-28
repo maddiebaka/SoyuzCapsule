@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C15F06A62A20198300C14CD8 /* Soyuz.help in Resources */ = {isa = PBXBuildFile; fileRef = C15F06A42A20171E00C14CD8 /* Soyuz.help */; };
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
 		E16378B429A491E6002F05E9 /* MoonrakerSocketManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* MoonrakerSocketManagerTests.swift */; };
 		E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180B5E82992CD9100425DB0 /* SoyuzApp.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C15F06A42A20171E00C14CD8 /* Soyuz.help */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Soyuz.help; sourceTree = "<group>"; };
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
 		E16378B329A491E6002F05E9 /* MoonrakerSocketManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonrakerSocketManagerTests.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				E1A93C6529C92B3500BAE750 /* ViewModels */,
 				E1A93C6429C92AEE00BAE750 /* Views */,
 				E124B9D72993FE5500C0D2D2 /* Info.plist */,
+				C15F06A42A20171E00C14CD8 /* Soyuz.help */,
 				E180B5E82992CD9100425DB0 /* SoyuzApp.swift */,
 				E180B5EC2992CD9200425DB0 /* Assets.xcassets */,
 				E180B5F12992CD9200425DB0 /* Persistence.swift */,
@@ -283,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C15F06A62A20198300C14CD8 /* Soyuz.help in Resources */,
 				E180B5F02992CD9200425DB0 /* Preview Assets.xcassets in Resources */,
 				E180B5ED2992CD9200425DB0 /* Assets.xcassets in Resources */,
 			);

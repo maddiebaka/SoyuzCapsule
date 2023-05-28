@@ -1,0 +1,21 @@
+<head>
+    <title>First Start Configuration</title>
+    <meta name="KEYWORDS" content="zeroconf bonjour mainsail moonraker api server connect">
+    <meta name="robots" content="anchors">
+</head>
+<body>
+    <a name="bonjour"></a>
+    <h1>First Start Configuration</h1>
+    <p>
+        Soyuz can auto-detect your 3D printer using Bonjour, also known as zeroconf. An install of Mainsail
+        supports zeroconf, but it isn't enabled out of the box and requires a single-line configuration change.
+    </p>
+    <p>
+        To enable zeroconf in Mainsail, locate your <em>moonraker.conf</em> file and add a single entry:
+    </p>
+    <span>[zeroconf]</span>
+    <br/>
+    <p>
+        This is sufficient to enable zeroconf support, you don't need any additional configuration after this single line.
+    </p>
+</body>
