@@ -78,7 +78,7 @@ struct PrinterConfigView: View {
             }
         }
         .onAppear {
-            //NSApplication.shared.activate(ignoringOtherApps: true)
+            NSApplication.shared.activate(ignoringOtherApps: true)
         }
     }
 }
