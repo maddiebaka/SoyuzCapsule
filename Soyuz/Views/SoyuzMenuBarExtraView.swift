@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 import AppKit
 import Network
 
@@ -21,6 +22,7 @@ struct SoyuzMenuBarExtraView: View {
     @State var printPercentage: Double = 0
     
     @Binding var currentMenuBarIcon: String
+    var notification = UserNotificationHandler.shared
     
     @State var hotendHotTemp: Bool = false
     @State var bedHotTemp: Bool = false
@@ -53,7 +55,7 @@ struct SoyuzMenuBarExtraView: View {
                         // Hot-end temperature
                         HStack {
                             Image(systemName: "flame")
-                                .foregroundColor( printerManager.extruderTemperature > DANGERTEMP ? .red : .white )
+                                .foregroundColor( printerManager.extruderTemperature > DANGERTEMP ? .red : Color(nsColor: .labelColor))
                                 .opacity( printerManager.extruderTemperature > DANGERTEMP ? 1.0 : 0.3 )
                             Text("Hotend")
                                 .font(.headline)
@@ -63,7 +65,7 @@ struct SoyuzMenuBarExtraView: View {
                         // Bed temperature
                         HStack {
                             Image(systemName: "flame")
-                                .foregroundColor( printerManager.bedTemperature > DANGERTEMP ? .red : .white )
+                                .foregroundColor( printerManager.bedTemperature > DANGERTEMP ? .red : Color(nsColor: .labelColor) )
                                 .opacity( printerManager.bedTemperature > DANGERTEMP ? 1.0 : 0.3 )
                             Text("Plate")
                                 .font(.headline)
@@ -79,12 +81,18 @@ struct SoyuzMenuBarExtraView: View {
         // Footer information
         HStack {
             Button {
-                print("Button pressed")
                 openWindow(id: "soyuz_cfg")
             } label: {
                 Text("Printers")
                     .foregroundColor(Color("ButtonForegroundColor"))
             }
+            /* Debugging Stuff */
+            Button {
+                notification.sendNotification(.printComplete)
+            } label: {
+                Text("Notify")
+            }
+            /* Debugging Stuff */
             Spacer()
             if(printerManager.isConnected) {
                 Image(systemName: "network")

@@ -29,6 +29,8 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     @Published var connection: NWConnection?
     @Published var friendlyHostname: String = ""
     
+    var notification = UserNotificationHandler.shared
+    
     private var socket: WebSocket?
     private var lastPingDate = Date()
     private var starscreamEngine: Engine
@@ -67,11 +69,11 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
             print("\(key): \(value)")
         })
         
-//        if isConnected == true {
-//            connection?.cancel()
-//            socket?.disconnect()
-//        }
-//
+        //        if isConnected == true {
+        //            connection?.cancel()
+        //            socket?.disconnect()
+        //        }
+        //
         if connection == nil {
             connection = NWConnection(to: endpoint, using: .tcp)
         }
@@ -95,7 +97,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
                     connection?.cancel()
                     
                     DispatchQueue.main.async {
-                        friendlyHostname = endpoint.toFriendlyString()
+                        self.friendlyHostname = endpoint.toFriendlyString()
                         self.socketHost = sanitizedHost
                         self.socketPort = "\(port)"
                         self.openWebsocket()
@@ -115,7 +117,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         connection = nil
         socket?.disconnect()
     }
-
+    
     
     // MARK: Private functions
     
@@ -221,16 +223,22 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     // Parse a JSON-RPC query-response message
     func parse_response(_ response: jsonRpcResponse) {
         state = response.result.status.print_stats?.state ?? ""
+        
+        
         progress = response.result.status.virtual_sdcard?.progress ?? 0.0
         extruderTemperature = response.result.status.extruder?.temperature ?? 0.0
         bedTemperature = response.result.status.heater_bed?.temperature ?? 0.0
-        
-        print(response)
     }
     
     // Parse a JSON-RPC update message
     func parse_update(_ update: jsonRpcUpdate) {
         if let newState = update.params.status?.print_stats?.state {
+            print("Printer state: \(newState)")
+            // Issue a notification when state changes from printing to complete
+            // TODO: Handle this better
+            if newState == "complete" && state == "printing" {
+                notification.sendNotification(.printComplete)
+            }
             state = newState
         }
         if let newProgress = update.params.status?.virtual_sdcard?.progress  {

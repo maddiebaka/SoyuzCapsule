@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C15B60A82A2423760052F712 /* UserNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B60A72A2423760052F712 /* UserNotificationHandler.swift */; };
 		C15F06A62A20198300C14CD8 /* Soyuz.help in Resources */ = {isa = PBXBuildFile; fileRef = C15F06A42A20171E00C14CD8 /* Soyuz.help */; };
 		E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */; };
 		E16378B429A491E6002F05E9 /* MoonrakerSocketManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16378B329A491E6002F05E9 /* MoonrakerSocketManagerTests.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C15B60A72A2423760052F712 /* UserNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationHandler.swift; sourceTree = "<group>"; };
 		C15F06A42A20171E00C14CD8 /* Soyuz.help */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Soyuz.help; sourceTree = "<group>"; };
 		E124B9D72993FE5500C0D2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E124B9D829941A4D00C0D2D2 /* PrinterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterConfigView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				E180B61C2992D53700425DB0 /* PrinterObjectsQuery.swift */,
 				E180B6212993256E00425DB0 /* MoonrakerSocketManager.swift */,
 				E1A93C6629C932E200BAE750 /* BonjourBrowser.swift */,
+				C15B60A72A2423760052F712 /* UserNotificationHandler.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				E180B5F52992CD9200425DB0 /* KlipperMon.xcdatamodeld in Sources */,
 				E124B9D929941A4D00C0D2D2 /* PrinterConfigView.swift in Sources */,
 				E180B5F22992CD9200425DB0 /* Persistence.swift in Sources */,
+				C15B60A82A2423760052F712 /* UserNotificationHandler.swift in Sources */,
 				E1A93C6729C932E200BAE750 /* BonjourBrowser.swift in Sources */,
 				E180B5E92992CD9100425DB0 /* SoyuzApp.swift in Sources */,
 				E180B6222993256E00425DB0 /* MoonrakerSocketManager.swift in Sources */,
@@ -477,17 +481,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Soyuz/Soyuz.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "Soyuz/Preview\\ Content";
 				DEVELOPMENT_TEAM = W9ASV855X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Soyuz/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -507,17 +513,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Soyuz/Soyuz.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "Soyuz/Preview\\ Content";
 				DEVELOPMENT_TEAM = W9ASV855X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Soyuz/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
