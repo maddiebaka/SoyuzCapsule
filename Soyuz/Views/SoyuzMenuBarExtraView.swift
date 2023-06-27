@@ -86,13 +86,6 @@ struct SoyuzMenuBarExtraView: View {
                 Text("Printers")
                     .foregroundColor(Color("ButtonForegroundColor"))
             }
-            /* Debugging Stuff */
-            Button {
-                notification.sendNotification(.printComplete)
-            } label: {
-                Text("Notify")
-            }
-            /* Debugging Stuff */
             Spacer()
             if(printerManager.isConnected) {
                 Image(systemName: "network")

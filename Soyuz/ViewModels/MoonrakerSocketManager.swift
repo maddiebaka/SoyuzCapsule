@@ -74,7 +74,7 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         //            socket?.disconnect()
         //        }
         //
-        if connection == nil {
+        if connection == nil || connection?.state == .cancelled {
             connection = NWConnection(to: endpoint, using: .tcp)
         }
         
@@ -112,25 +112,29 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
     
     func disconnect() {
         print("disconnect() called")
-        isConnected = false
-        //connection?.cancel()
-        connection = nil
+        self.isConnected = false
         socket?.disconnect()
+        socket = nil
     }
     
     
     // MARK: Private functions
     
     // Opens the websocket connection
-    private func openWebsocket() {
+    func openWebsocket() {
         // Exit function if there is no server to connect to
         if socketHost.isEmpty || socketPort.isEmpty {
             return
         }
         
+        if socket != nil {
+            socket!.connect()
+            return
+        }
+        
         lastPingDate = Date.now
         
-        var request = URLRequest(url: URL(string: "http://\(socketHost):\(socketPort)/websocket")!)
+        var request = URLRequest(url: URL(string: "ws://\(socketHost):\(socketPort)/websocket")!)
         request.timeoutInterval = 30
         socket = WebSocket(request: request, engine: starscreamEngine)
         socket!.delegate = self
@@ -154,7 +158,8 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         switch(notification.name) {
         case NSWorkspace.screensDidSleepNotification:
             print("Screen slept. Disconnecting..")
-            socket?.disconnect()
+            self.disconnect()
+            //socket?.disconnect()
         case NSWorkspace.screensDidWakeNotification:
             print("Screen awoke. Opening websocket..")
             self.openWebsocket()
@@ -216,6 +221,15 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
         case .error(let error):
             isConnected = false
             print("[error] Starscream: \(error.debugDescription)")
+            switch(error) {
+            case .some(HTTPUpgradeError.notAnUpgrade(200)):
+                print("[debug] Starscream: Forcing disconnect and reconnect..")
+                self.socket?.forceDisconnect()
+                self.socket = nil
+                self.openWebsocket()
+            default:
+                break
+            }
         }
     }
     

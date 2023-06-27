@@ -13,6 +13,8 @@ struct PrinterConfigView: View {
     @ObservedObject var printerManager: MoonrakerSocketManager
     @ObservedObject var bonjourBrowser = BonjourBrowser()
     
+    //@State var bonjourBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."),                                       using: .tcp)
+    
     @Environment(\.openURL) private var openURL
     
     
@@ -61,7 +63,7 @@ struct PrinterConfigView: View {
                         }.buttonStyle(PlainButtonStyle())
 
                     }
-                    ForEach(bonjourBrowser.NDEngineResults , id: \.hashValue) { result in
+                    ForEach(bonjourBrowser.networkResults, id: \.hashValue) { result in
                         HStack {
                             Text(result.endpoint.toFriendlyString())
                             Button {
@@ -79,6 +81,10 @@ struct PrinterConfigView: View {
         }
         .onAppear {
             NSApplication.shared.activate(ignoringOtherApps: true)
+            bonjourBrowser.enableScan(DispatchQueue.main)
+        }
+        .onDisappear {
+            bonjourBrowser.disableScan()
         }
     }
 }
