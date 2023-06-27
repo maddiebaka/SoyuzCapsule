@@ -35,23 +35,27 @@ extension NWBrowser: NetworkDiscoveryEngine {
 // MARK: BonjourBrowser
 
 class BonjourBrowser: ObservableObject {
-    @Published var NDEngineResults: [NWBrowser.Result] = []
+    @Published var networkResults: [NWBrowser.Result] = []
     
-    private let nwBrowser: NetworkDiscoveryEngine
-    var connection: NWConnection!
+    private var nwBrowser: NWBrowser!
+    private var connection: NWConnection!
     
-    // TEMPORARY
-//    var bonjourListener: NWListener?
-
-    init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
-        nwBrowser = browser
+    
+    init() {
+        if nwBrowser == nil {
+            setup()
+        }
+    }
+    
+    func setup() {
+        nwBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)
         // Bonjour browser results changed handler
         nwBrowser.setBrowseResultsChangedHandler({ (newResults, changes) in
             print("[update] Results changed.")
-            self.NDEngineResults.removeAll()
+            self.networkResults.removeAll()
             newResults.forEach { result in
                 print(result)
-                self.NDEngineResults.append(result)
+                self.networkResults.append(result)
             }
         })
         
@@ -72,4 +76,63 @@ class BonjourBrowser: ObservableObject {
         nwBrowser.startScan(queue: DispatchQueue.main)
     }
     
+    func enableScan(_ queue: DispatchQueue) {
+        if(nwBrowser.state == .cancelled) {
+            self.setup()
+        }
+        nwBrowser.start(queue: queue)
+    }
+    
+    func disableScan() {
+        if(nwBrowser.state != .cancelled) {
+            nwBrowser.cancel()
+        }
+    }
 }
+
+//class BonjourBrowser: ObservableObject {
+//    @Published var NDEngineResults: [NWBrowser.Result] = []
+//
+//    private let nwBrowser: NetworkDiscoveryEngine
+//    var connection: NWConnection!
+//
+//    // TEMPORARY
+////    var bonjourListener: NWListener?
+//
+//    init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
+//        nwBrowser = browser
+//        // Bonjour browser results changed handler
+//        nwBrowser.setBrowseResultsChangedHandler({ (newResults, changes) in
+//            print("[update] Results changed.")
+//            self.NDEngineResults.removeAll()
+//            newResults.forEach { result in
+//                print(result)
+//                self.NDEngineResults.append(result)
+//            }
+//        })
+//
+//        // Bonjour browser state update handler
+//        nwBrowser.setStateUpdateHandler({ newState in
+//            switch newState {
+//            case .failed(let error):
+//                print("[error] nwbrowser: \(error)")
+//            case .ready:
+//                print("[ready] nwbrowser")
+//            case .setup:
+//                print("[setup] nwbrowser")
+//            default:
+//                break
+//            }
+//        })
+//
+//        nwBrowser.startScan(queue: DispatchQueue.main)
+//    }
+//
+//    func startScanning(queue: DispatchQueue.main) {
+//        if(self.nwBrowser.state == NWBrowser.State.cancelled) {
+//
+//        }
+//        self.nwBrowser.startScan(queue)
+//    }
+//
+//}
