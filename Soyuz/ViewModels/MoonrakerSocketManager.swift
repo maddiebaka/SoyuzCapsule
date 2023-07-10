@@ -1,9 +1,8 @@
-//
-//  MoonrakerSocketManager.swift
-//  KlipperMon
-//
-//  Created by maddiefuzz on 2/7/23.
-//
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 
 import Foundation
 import Network
@@ -69,11 +68,6 @@ class MoonrakerSocketManager: ObservableObject, WebSocketDelegate {
             print("\(key): \(value)")
         })
         
-        //        if isConnected == true {
-        //            connection?.cancel()
-        //            socket?.disconnect()
-        //        }
-        //
         if connection == nil || connection?.state == .cancelled {
             connection = NWConnection(to: endpoint, using: .tcp)
         }

@@ -1,9 +1,8 @@
-//
-//  PrinterConfigView.swift
-//  KlipperMon
-//
-//  Created by maddiefuzz on 2/8/23.
-//
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 
 import SwiftUI
 import Network
@@ -13,10 +12,7 @@ struct PrinterConfigView: View {
     @ObservedObject var printerManager: MoonrakerSocketManager
     @ObservedObject var bonjourBrowser = BonjourBrowser()
     
-    //@State var bonjourBrowser = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."),                                       using: .tcp)
-    
     @Environment(\.openURL) private var openURL
-    
     
     var body: some View {
         VStack {

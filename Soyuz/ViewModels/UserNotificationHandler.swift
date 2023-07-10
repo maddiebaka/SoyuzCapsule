@@ -1,9 +1,8 @@
-//
-//  UserNotificationProtocol.swift
-//  Soyuz
-//
-//  Created by Madeline Pace on 5/28/23.
-//
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 
 import UserNotifications
 

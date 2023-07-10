@@ -1,9 +1,8 @@
-//
-//  BonjourBrowser.swift
-//  Soyuz
-//
-//  Created by maddiefuzz on 3/20/23.
-//
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 
 import Foundation
 import Network
@@ -89,50 +88,3 @@ class BonjourBrowser: ObservableObject {
         }
     }
 }
-
-//class BonjourBrowser: ObservableObject {
-//    @Published var NDEngineResults: [NWBrowser.Result] = []
-//
-//    private let nwBrowser: NetworkDiscoveryEngine
-//    var connection: NWConnection!
-//
-//    // TEMPORARY
-////    var bonjourListener: NWListener?
-//
-//    init(browser: NetworkDiscoveryEngine = NWBrowser(for: .bonjourWithTXTRecord(type: "_moonraker._tcp", domain: "local."), using: .tcp)) {
-//        nwBrowser = browser
-//        // Bonjour browser results changed handler
-//        nwBrowser.setBrowseResultsChangedHandler({ (newResults, changes) in
-//            print("[update] Results changed.")
-//            self.NDEngineResults.removeAll()
-//            newResults.forEach { result in
-//                print(result)
-//                self.NDEngineResults.append(result)
-//            }
-//        })
-//
-//        // Bonjour browser state update handler
-//        nwBrowser.setStateUpdateHandler({ newState in
-//            switch newState {
-//            case .failed(let error):
-//                print("[error] nwbrowser: \(error)")
-//            case .ready:
-//                print("[ready] nwbrowser")
-//            case .setup:
-//                print("[setup] nwbrowser")
-//            default:
-//                break
-//            }
-//        })
-//
-//        nwBrowser.startScan(queue: DispatchQueue.main)
-//    }
-//
-//    func startScanning(queue: DispatchQueue.main) {
-//        if(self.nwBrowser.state == NWBrowser.State.cancelled) {
-//
-//        }
-//        self.nwBrowser.startScan(queue)
-//    }
-//
-//}
